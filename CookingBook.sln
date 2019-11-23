@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opening_The_Program", "Opening_The_Program\Opening_The_Program.csproj", "{874AF304-E0DF-4676-9916-4901424BBB71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIBook", "Opening_The_Program\GUIBook.csproj", "{874AF304-E0DF-4676-9916-4901424BBB71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

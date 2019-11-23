@@ -16,7 +16,16 @@ namespace Opening_The_Program
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            LoadingForm first = new LoadingForm();
+            DateTime end = DateTime.Now + TimeSpan.FromSeconds(5);
+            first.Show();
+
+            while (end > DateTime.Now) Application.DoEvents();
+
+            first.Close();
+            first.Dispose();
+            Application.Run(new CookingBookForm());
         }
     }
 }

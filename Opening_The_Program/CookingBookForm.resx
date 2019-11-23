@@ -117,20 +117,57 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Exit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="list" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\list.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="recipe" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\recipe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="move_Form" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\move Form.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btn_listOfRecipes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
   </data>
 </root>
