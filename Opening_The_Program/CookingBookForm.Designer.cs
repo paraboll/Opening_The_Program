@@ -114,6 +114,7 @@
             this.btn_listOfRecipes.Text = "Список рецептов";
             this.btn_listOfRecipes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_listOfRecipes.UseVisualStyleBackColor = true;
+            this.btn_listOfRecipes.Click += new System.EventHandler(this.btn_listOfRecipes_Click);
             // 
             // panel1
             // 

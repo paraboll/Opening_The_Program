@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLCookingBook.Controller;
 
 namespace Opening_The_Program
 {
@@ -70,6 +71,12 @@ namespace Opening_The_Program
         private void listRecipes1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_listOfRecipes_Click(object sender, EventArgs e)
+        {
+            ViewDataBase viewDataBase = new ViewDataBase();
+            viewDataBase.DataBa();
         }
     }
 }

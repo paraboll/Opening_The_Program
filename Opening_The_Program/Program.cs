@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BLCookingBook.Controller;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,6 +27,8 @@ namespace Opening_The_Program
 
             first.Close();
             first.Dispose();
+            //инициализируем БД при запускепрограммы
+            Database.SetInitializer(new DBInitialization());
             Application.Run(new CookingBookForm());
         }
     }
