@@ -18,9 +18,9 @@ namespace BLCookingBook.Controller
             {
                 NameRecipe = "яишница",
                 Ingredients = new List<Ingredient>()  {
-                    new Ingredient() { NameIngredient = "Яйца, шт", Сount = 5 },
-                    new Ingredient() { NameIngredient = "Соль, гр", Сount =  10},
-                    new Ingredient() { NameIngredient = "оливковое/подсолнечное масло, мл", Сount = 1 },
+                    new Ingredient() { NameIngredient = "Яйца, шт", Сount = "5" },
+                    new Ingredient() { NameIngredient = "Соль, гр", Сount =  "10"},
+                    new Ingredient() { NameIngredient = "оливковое/подсолнечное масло, мл", Сount = "1" },
                 },
                 DescriptionOfRecipes = "Рецепт: " +
                         "1.Помыть яйцо(яйца) " +
@@ -35,9 +35,9 @@ namespace BLCookingBook.Controller
             {
                 NameRecipe = "яишница1",
                 Ingredients = new List<Ingredient>()  {
-                    new Ingredient() { NameIngredient = "Яйца, шт", Сount = 5 },
-                    new Ingredient() { NameIngredient = "Соль, гр", Сount =  10},
-                    new Ingredient() { NameIngredient = "оливковое/подсолнечное масло, мл", Сount = 1 },
+                    new Ingredient() { NameIngredient = "Яйца, шт", Сount = "5" },
+                    new Ingredient() { NameIngredient = "Соль, гр", Сount =  "10"},
+                    new Ingredient() { NameIngredient = "оливковое/подсолнечное масло, мл", Сount = "1" },
                 },
                 DescriptionOfRecipes = "Рецепт: " +
                        "1.Помыть яйцо(яйца) " +
@@ -53,9 +53,9 @@ namespace BLCookingBook.Controller
             {
                 NameRecipe = "яишница2",
                 Ingredients = new List<Ingredient>()  {
-                    new Ingredient() { NameIngredient = "Яйца, шт", Сount = 5 },
-                    new Ingredient() { NameIngredient = "Соль, гр", Сount =  10},
-                    new Ingredient() { NameIngredient = "оливковое/подсолнечное масло, мл", Сount = 1 },
+                    new Ingredient() { NameIngredient = "Яйца, шт", Сount = "5" },
+                    new Ingredient() { NameIngredient = "Соль, гр", Сount =  "10"},
+                    new Ingredient() { NameIngredient = "оливковое/подсолнечное масло, мл", Сount = "1" },
                 },
                 DescriptionOfRecipes = "Рецепт: " +
                        "1.Помыть яйцо(яйца) " +

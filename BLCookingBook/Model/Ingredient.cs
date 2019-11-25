@@ -12,6 +12,6 @@ namespace BLCookingBook.Model
 
         public string NameIngredient { get; set; }
 
-        public int? Сount { get; set; }
+        public string Сount { get; set; }
     }
 }

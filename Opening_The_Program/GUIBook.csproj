@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddRecipe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddRecipe.Designer.cs">
+      <DependentUpon>AddRecipe.cs</DependentUpon>
+    </Compile>
     <Compile Include="CookingBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,8 +80,17 @@
     <Compile Include="LoadingForm.Designer.cs">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Note.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Note.Designer.cs">
+      <DependentUpon>Note.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddRecipe.resx">
+      <DependentUpon>AddRecipe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CookingBookForm.resx">
       <DependentUpon>CookingBookForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -84,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Note.resx">
+      <DependentUpon>Note.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -132,6 +150,9 @@
       <Project>{26E0E023-2589-4ABF-8E41-CA2D7901C604}</Project>
       <Name>BLCookingBook</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\note.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

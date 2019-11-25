@@ -75,8 +75,30 @@ namespace Opening_The_Program
 
         private void btn_listOfRecipes_Click(object sender, EventArgs e)
         {
-            ViewDataBase viewDataBase = new ViewDataBase();
-            viewDataBase.DataBa();
+            panel_Note.Visible = false;
+            panel_AddRecipe.Visible = false;
+            listRecipes.Visible = true;
+            //ViewDataBase viewDataBase = new ViewDataBase();
+            //viewDataBase.DataBa();
+        }
+
+        private void btn_addRacipe_Click(object sender, EventArgs e)
+        {
+            panel_Note.Visible = false;
+            panel_AddRecipe.Visible = true;
+            listRecipes.Visible = false;
+        }
+
+        private void btb_note_Click(object sender, EventArgs e)
+        {
+            panel_Note.Visible = true;
+            panel_AddRecipe.Visible = false;
+            listRecipes.Visible = false;
+        }
+
+        private void panel_AddRecipe_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
