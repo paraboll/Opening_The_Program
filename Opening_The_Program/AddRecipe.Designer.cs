@@ -44,11 +44,9 @@
             this.tb_nameIngr = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.tb_idIngr = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbx_NameIngr = new System.Windows.Forms.ComboBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rtb_DescriptionRecie = new System.Windows.Forms.RichTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btn_SaveRecipe = new System.Windows.Forms.Button();
@@ -73,7 +71,6 @@
             this.tb_TitleRecipe.Name = "tb_TitleRecipe";
             this.tb_TitleRecipe.Size = new System.Drawing.Size(159, 26);
             this.tb_TitleRecipe.TabIndex = 1;
-            this.tb_TitleRecipe.TextChanged += new System.EventHandler(this.tb_TitleRecipe_TextChanged);
             // 
             // label2
             // 
@@ -153,8 +150,6 @@
             this.groupBox3.Controls.Add(this.tb_nameIngr);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.tb_idIngr);
-            this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.cbx_NameIngr);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -217,23 +212,6 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "Имя ингридиента";
             // 
-            // tb_idIngr
-            // 
-            this.tb_idIngr.Enabled = false;
-            this.tb_idIngr.Location = new System.Drawing.Point(189, 74);
-            this.tb_idIngr.Name = "tb_idIngr";
-            this.tb_idIngr.Size = new System.Drawing.Size(158, 26);
-            this.tb_idIngr.TabIndex = 5;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(85, 77);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 20);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "id элемента";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -253,18 +231,18 @@
             this.cbx_NameIngr.TabIndex = 0;
             this.cbx_NameIngr.SelectedIndexChanged += new System.EventHandler(this.cbx_NameIngr_SelectedIndexChanged);
             // 
-            // richTextBox1
+            // rtb_DescriptionRecie
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(6, 60);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(351, 371);
-            this.richTextBox1.TabIndex = 8;
-            this.richTextBox1.Text = "";
+            this.rtb_DescriptionRecie.Location = new System.Drawing.Point(6, 60);
+            this.rtb_DescriptionRecie.Name = "rtb_DescriptionRecie";
+            this.rtb_DescriptionRecie.Size = new System.Drawing.Size(351, 371);
+            this.rtb_DescriptionRecie.TabIndex = 8;
+            this.rtb_DescriptionRecie.Text = "";
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.richTextBox1);
+            this.groupBox4.Controls.Add(this.rtb_DescriptionRecie);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox4.Location = new System.Drawing.Point(395, 37);
             this.groupBox4.Name = "groupBox4";
@@ -291,6 +269,7 @@
             this.btn_SaveRecipe.TabIndex = 10;
             this.btn_SaveRecipe.Text = "Записать рецепт";
             this.btn_SaveRecipe.UseVisualStyleBackColor = true;
+            this.btn_SaveRecipe.Click += new System.EventHandler(this.btn_SaveRecipe_Click);
             // 
             // Panel_AddRecipe
             // 
@@ -303,6 +282,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Panel_AddRecipe";
             this.Size = new System.Drawing.Size(800, 570);
+            this.Load += new System.EventHandler(this.Panel_AddRecipe_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -327,8 +307,6 @@
         private System.Windows.Forms.TextBox tb_countIngrid;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox tb_idIngr;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbx_NameIngr;
         private System.Windows.Forms.Button btn_EditRecipe;
@@ -337,7 +315,7 @@
         private System.Windows.Forms.TextBox tb_nameIngr;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtb_DescriptionRecie;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btn_SaveRecipe;

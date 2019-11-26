@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\DBInitialization.cs" />
-    <Compile Include="Controller\IDComparer.cs" />
     <Compile Include="Controller\ViewDataBase.cs" />
     <Compile Include="Model\DBContext.cs" />
     <Compile Include="Model\Ingredient.cs" />

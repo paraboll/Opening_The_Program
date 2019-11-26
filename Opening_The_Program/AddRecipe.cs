@@ -15,91 +15,163 @@ namespace Opening_The_Program
     public partial class Panel_AddRecipe : UserControl
     {
         List<Ingredient> ingredients;
-        int idCount, idItem;
+
         public Panel_AddRecipe()
         {
             InitializeComponent();
             ingredients = new List<Ingredient>();
-            idItem = 0;
-        }
 
-        private void tb_TitleRecipe_TextChanged(object sender, EventArgs e)
-        {
-
+            SetUpList();
         }
 
         private void btn_AddIngrid_Click(object sender, EventArgs e)
         {
-            idCount = 0;
-
-            foreach (var i in ingredients)
+            //добавляем новый элемент в лист
+            ingredients.Add(new Ingredient()
             {
-                Console.WriteLine(i.Id);
-            }
-
-            Console.WriteLine("сейчас ID: " + idItem);
-            //добавили ингридиент в коллекцию
-            ingredients.Add(new Ingredient() {
                 NameIngredient = tb_NameIngrid.Text,
-                Сount = tb_countIngrid.Text,
-                Id = idItem
+                Сount = tb_countIngrid.Text
             });
 
-            //записываем элемент в лист
-            cbx_NameIngr.Items.Add(ingredients[idItem].NameIngredient);
-
-            //установили следующий Id с учетом возможных пропусков пропусков
-            foreach (var i in ingredients)
-            {
-                if (i.Id == idCount) idCount++;
-                else break;
-            }
-            idItem = idCount;
-            Console.WriteLine("следующий id " + idItem);
-
-            
-            //TODO: Сделать проверку 2х одинаковый id...пока незнаю как.
+            //обновляем комбобокс
+            clearCombobox();
         }
 
         private void cbx_NameIngr_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //находим выбраный элемент в комбобокс
             var item = ingredients.Find(n => n.NameIngredient == cbx_NameIngr.Text);
-            tb_idIngr.Text = item.Id.ToString();
+   
+            //выводим о нем данные
             tb_nameIngr.Text = item.NameIngredient;
             tb_countIngr.Text = item.Сount;
         }
 
         private void btn_DeleteRecipe_Click(object sender, EventArgs e)
         {
-            ingredients.RemoveAt(Convert.ToInt32(tb_idIngr.Text));
-            cbx_NameIngr.Items.RemoveAt(Convert.ToInt32(tb_idIngr.Text));
+            //проверяем что лист не пустой
+            if (cbx_NameIngr.Text != null && cbx_NameIngr.Text != "")
+            {
 
-            tb_idIngr.Text = "";
+                //находим и удаляем элемент
+                var itemToDelete = ingredients.Where(x => x.NameIngredient == cbx_NameIngr.Text).Select(x => x).First();
+                ingredients.Remove(itemToDelete);
+
+                //обновляем комбобокс
+                clearCombobox();
+            }
+
             tb_nameIngr.Text = "";
             tb_countIngr.Text = "";
-
-            idCount = 0;
-            foreach (var i in ingredients)
-            {
-                if (i.Id == idCount) idCount++;
-                else break;
-            }
-            idItem = idCount;
-            Console.WriteLine("следующий id " + idItem);
-
-            IDComparer iDComparer = new IDComparer();
-            ingredients.Sort(iDComparer);
         }
 
         private void btn_EditRecipe_Click(object sender, EventArgs e)
         {
-            //TODO: сделать редактирование имени и коректный вывод в комбобокс...пока незнаю как.
-            var item = ingredients.Find(n => n.NameIngredient == cbx_NameIngr.Text);
+            //проверяем что лист не пустой
+            if (cbx_NameIngr.Text != null && cbx_NameIngr.Text != "")
+            {
+                //находим элемент который нужно отредактировать и обновляем его
+                var item = ingredients.Find(n => n.NameIngredient == cbx_NameIngr.Text);
+                item.NameIngredient = tb_nameIngr.Text;
+                item.Сount = tb_countIngr.Text;
 
-            item.NameIngredient = tb_nameIngr.Text;
-            cbx_NameIngr.Items[item.Id] = tb_nameIngr.Text;
+                //обновляем комбобокс
+                clearCombobox();
+            }    
+        }
 
-            item.Сount = tb_countIngr.Text;
+        public void clearCombobox()
+        {
+            cbx_NameIngr.Items.Clear();
+            int count = 0;
+            foreach (var i in ingredients)
+            {
+                cbx_NameIngr.Items.Add(ingredients[count].NameIngredient);
+                count++;
+            }
+
+            tb_nameIngr.Text = "";
+            tb_countIngr.Text = "";
+        }
+
+        public void SetUpList()
+        {
+            ///***инициализируем для тестов начальный лист***///
+            ingredients.Add(new Ingredient()
+            {
+                NameIngredient = "морковь",
+                Сount = "2 штуки",
+            });
+            ingredients.Add(new Ingredient()
+            {
+                NameIngredient = "картошка",
+                Сount = "2 кг",
+            });
+            ingredients.Add(new Ingredient()
+            {
+                NameIngredient = "перец болгарский",
+                Сount = "1 кг",
+            });
+            ingredients.Add(new Ingredient()
+            {
+                NameIngredient = "лук",
+                Сount = "1 шт",
+            });
+
+            ///***Добавляем в комбобокс***///
+            int count = 0;
+            foreach (var item in ingredients)
+            {
+                cbx_NameIngr.Items.Add(ingredients[count].NameIngredient);
+                count++;
+            }
+        }
+
+        private void btn_SaveRecipe_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tb_TitleRecipe.Text == null || tb_TitleRecipe.Text == "")
+                {
+                    ErrorMessage("Не заполено название рецепта.");
+                }
+
+                if (ingredients == null)
+                {
+                    ErrorMessage("Список ингридиентов пуст.");
+                }
+
+                if (rtb_DescriptionRecie.Text == null || rtb_DescriptionRecie.Text == "")
+                {
+                    ErrorMessage("Незаполнено описание рецепта.");
+                }
+
+                DBContext dBContext = new DBContext();
+                Recipe recipe = new Recipe();
+                recipe.NameRecipe = tb_TitleRecipe.Text;
+                recipe.Ingredients = ingredients;
+                recipe.DescriptionOfRecipes = rtb_DescriptionRecie.Text;
+
+                dBContext.Recipes.Add(recipe);
+                dBContext.SaveChanges();
+            }
+            catch
+            {
+                ErrorMessage("Заполните форму снова.");
+            }  
+        }
+
+        public void ErrorMessage(string ErrorText)
+        {
+            tb_TitleRecipe.Text = "";
+            rtb_DescriptionRecie.Text = "";
+            ingredients = null;
+            ingredients = new List<Ingredient>();
+            MessageBox.Show("Ошибка, " + ErrorText);
+        }
+
+        private void Panel_AddRecipe_Load(object sender, EventArgs e)
+        {
 
         }
     }
