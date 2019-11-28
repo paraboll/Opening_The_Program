@@ -28,7 +28,7 @@ namespace Opening_The_Program
             first.Close();
             first.Dispose();
             //инициализируем БД при запускепрограммы
-            Database.SetInitializer(new DBInitialization());
+            //Database.SetInitializer(new DBInitialization());
             Application.Run(new CookingBookForm());
         }
     }

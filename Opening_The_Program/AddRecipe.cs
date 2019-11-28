@@ -146,14 +146,25 @@ namespace Opening_The_Program
                     ErrorMessage("Незаполнено описание рецепта.");
                 }
 
+
                 DBContext dBContext = new DBContext();
                 Recipe recipe = new Recipe();
                 recipe.NameRecipe = tb_TitleRecipe.Text;
-                recipe.Ingredients = ingredients;
+
+                List<Recipe> recipes = new List<Recipe>();
+                recipes.Add(recipe);
+
+                ///recipe.Ingredients.Clear();
+                recipe.Ingredients = new List<Ingredient>(ingredients);
                 recipe.DescriptionOfRecipes = rtb_DescriptionRecie.Text;
 
-                dBContext.Recipes.Add(recipe);
-                dBContext.SaveChanges();
+                //dBContext.Recipes.Add(recipe);
+                //dBContext.SaveChanges();
+
+                SaveFile saveFile = new SaveFile();
+                saveFile.SaveInFileListXML(recipes);
+                //saveFile.SaveInFileListXML(recipes);
+                MessageBox.Show("Добавлен новый рецепт");
             }
             catch
             {

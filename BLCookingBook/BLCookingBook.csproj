@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\DBInitialization.cs" />
+    <Compile Include="Controller\SaveFile.cs" />
     <Compile Include="Controller\ViewDataBase.cs" />
     <Compile Include="Model\DBContext.cs" />
     <Compile Include="Model\Ingredient.cs" />
@@ -60,7 +61,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

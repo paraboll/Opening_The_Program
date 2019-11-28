@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLCookingBook.Controller;
+using BLCookingBook.Model;
 
 namespace Opening_The_Program
 {
@@ -78,8 +79,22 @@ namespace Opening_The_Program
             panel_Note.Visible = false;
             panel_AddRecipe.Visible = false;
             listRecipes.Visible = true;
-            ViewDataBase viewDataBase = new ViewDataBase();
-            viewDataBase.DataBa();
+
+            
+            SaveFile saveFile = new SaveFile();
+            List<Recipe> data = saveFile.LoadFileXML();
+
+            foreach (var d in data)
+            {
+                Console.WriteLine(d.NameRecipe + " " + d.DescriptionOfRecipes);
+                foreach (var i in d.Ingredients)
+                {
+                    Console.WriteLine(i.NameIngredient + " " + i.Сount);
+                }
+                Console.WriteLine();
+            }
+            //ViewDataBase viewDataBase = new ViewDataBase();
+            //viewDataBase.DataBa();
         }
 
         private void btn_addRacipe_Click(object sender, EventArgs e)
