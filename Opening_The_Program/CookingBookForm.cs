@@ -82,7 +82,7 @@ namespace Opening_The_Program
 
             
             SaveFile saveFile = new SaveFile();
-            List<Recipe> data = saveFile.LoadFileXML();
+            List<Recipe> data = saveFile.GetListRecipe();
 
             foreach (var d in data)
             {

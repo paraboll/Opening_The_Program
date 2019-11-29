@@ -10,59 +10,104 @@ using System.Xml.Serialization;
 namespace BLCookingBook.Controller
 {
     /// <summary>
-    /// Класс позволяет сохранять и загружать данные из List в форме XLM и обратно.
+    /// Класс позволяет сохранять и загружать данные из текстового файла.
     /// </summary>
     public class SaveFile
     {
-        /// <summary>
-        /// Сохранение данных из list в файл в формате XML.
-        /// </summary>
-        /// <param name="recipes">list который необходимо сохранить</param>
-        public void SaveInFileListXML(List<Recipe> recipes)
-        {
-            var xmlFormatted = new XmlSerializer(typeof(List<Recipe>));
-
-            using (var file = new FileStream("Recipe.xml", FileMode.OpenOrCreate, FileAccess.Write))
-            {
-                xmlFormatted.Serialize(file, recipes);
-            }
-        }
-
-        public void SaveInFileXML(Recipe recipe)
-        {
-            //Create our own namespaces for the output
-            XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
-
-            //Add an empty namespace and empty value
-            ns.Add("", "");
-
-            XmlRootAttribute xRoot = new XmlRootAttribute();
-            xRoot.ElementName = "Recipe";
-            xRoot.IsNullable = true;
-
-            var xmlFormatted = new XmlSerializer(typeof(Recipe), xRoot);
-
-            using (var file = new FileStream("Recipe.xml", FileMode.Open, FileAccess.Write))
-            {
-                xmlFormatted.Serialize(file, recipe, ns);
-            }
-        }
+        //////------блок вывода в фаил--------/////
 
         /// <summary>
-        /// Загружает данные в List.
+        /// метод вывода данных в фаил по определенному алгоритму.
         /// </summary>
-        /// <returns></returns>
-        public List<Recipe> LoadFileXML()
+        /// <param name="recipe">Новый рецепт</param>
+        public void WriteInFile(Recipe recipe)
         {
-            List<Recipe> gg;
-            var xmlFormatted = new XmlSerializer(typeof(List<Recipe>));
+            //проверка на создание папка
+            CreateIfMissing("data");
 
-            using (var file = new FileStream("Recipe.xml", FileMode.Open, FileAccess.Read))
+            StreamWriter str = new StreamWriter("Data//Recipe.txt", true);
+            str.WriteLine("NewRecipe");
+
+            //Задаем имя рецепту
+            str.WriteLine(recipe.NameRecipe);
+
+            //Задаем описание рецепта
+            str.WriteLine(recipe.DescriptionOfRecipes);
+
+            //для удобства считывания - количество ингридиентов
+            str.WriteLine(recipe.Ingredients.Count);
+
+            //Задаем список ингридиентов: имя + количество
+            foreach (var item in recipe.Ingredients)
             {
-                gg =  xmlFormatted.Deserialize(file) as List<Recipe>;
+                str.WriteLine(item.NameIngredient);
+                str.WriteLine(item.Сount);
             }
+            str.WriteLine("------------");
 
-            return gg;
+            str.Close();
+            Console.WriteLine("Запись в фаил успешна --> Data//Recipe.txt");
+            Console.WriteLine();
+        }
+
+        // метод проверяет существует ли уже папка с введенным именем и если нет - создает ее
+        private void CreateIfMissing(string path)
+        {
+            bool folderExists = Directory.Exists(path);
+            if (!folderExists)
+                Directory.CreateDirectory(path);
+        }
+        //////-----/блок вывода в фаил--------/////
+        
+        /// <summary>
+        /// Метод распарсивает фаил Рецептов.
+        /// </summary>
+        /// <returns>Возвращяет лист рецептов из файла.</returns>
+        public List<Recipe> GetListRecipe()
+        {
+            List<Recipe> recipes = new List<Recipe>(); 
+            Recipe recipe;
+            string newRecipe;
+
+            using (var reader = new StreamReader("Data//Recipe.txt"))
+            {
+                while (reader.Peek() != -1)
+                {
+                    newRecipe = reader.ReadLine();
+                    if (newRecipe == "NewRecipe")
+                    {
+                        recipe = new Recipe();
+
+                        recipe.NameRecipe = reader.ReadLine();
+                        recipe.DescriptionOfRecipes = reader.ReadLine();
+                        int ingLength = Convert.ToInt32(reader.ReadLine());
+                        recipe.Ingredients = new List<Ingredient>();
+
+                        for (int i = 0; i < ingLength; i++)
+                        {
+                            recipe.Ingredients.Add(new Ingredient()
+                            {
+                                NameIngredient = reader.ReadLine(),
+                                Сount = reader.ReadLine()
+                            });
+                        }
+
+                        string end = reader.ReadLine();
+                        if (end == "------------")
+                        {
+                            recipes.Add(recipe);
+                            Console.WriteLine("Рецепт считан успешно");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибка");
+                    }
+
+
+                }
+                return recipes;
+            }
         }
     }
 }

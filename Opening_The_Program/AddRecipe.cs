@@ -147,12 +147,8 @@ namespace Opening_The_Program
                 }
 
 
-                DBContext dBContext = new DBContext();
                 Recipe recipe = new Recipe();
                 recipe.NameRecipe = tb_TitleRecipe.Text;
-
-                List<Recipe> recipes = new List<Recipe>();
-                recipes.Add(recipe);
 
                 ///recipe.Ingredients.Clear();
                 recipe.Ingredients = new List<Ingredient>(ingredients);
@@ -162,8 +158,7 @@ namespace Opening_The_Program
                 //dBContext.SaveChanges();
 
                 SaveFile saveFile = new SaveFile();
-                saveFile.SaveInFileListXML(recipes);
-                //saveFile.SaveInFileListXML(recipes);
+                saveFile.WriteInFile(recipe);
                 MessageBox.Show("Добавлен новый рецепт");
             }
             catch
