@@ -29,118 +29,106 @@
         private void InitializeComponent()
         {
             this.panel_ListRecipe = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.richtb_TitleRecipe = new System.Windows.Forms.RichTextBox();
-            this.panel_ListRecipe.SuspendLayout();
+            this.dgv_ingridTable = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rtb_DescriptionRecipe = new System.Windows.Forms.RichTextBox();
+            this.panel_rtbController = new System.Windows.Forms.Panel();
+            this.rtb_TitleRecipe = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ingridTable)).BeginInit();
+            this.panel_rtbController.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_ListRecipe
             // 
             this.panel_ListRecipe.AutoScroll = true;
             this.panel_ListRecipe.BackColor = System.Drawing.Color.Silver;
-            this.panel_ListRecipe.Controls.Add(this.button2);
-            this.panel_ListRecipe.Controls.Add(this.button1);
-            this.panel_ListRecipe.Controls.Add(this.richTextBox2);
-            this.panel_ListRecipe.Controls.Add(this.label1);
             this.panel_ListRecipe.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_ListRecipe.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_ListRecipe.Location = new System.Drawing.Point(0, 0);
             this.panel_ListRecipe.Name = "panel_ListRecipe";
             this.panel_ListRecipe.Size = new System.Drawing.Size(200, 570);
             this.panel_ListRecipe.TabIndex = 0;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Verdana", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Image = global::Opening_The_Program.Properties.Resources.recipe;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 126);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 76);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "индейка в кисло сладком соусе под шубой гаспачи с майонезом";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Verdana", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Image = global::Opening_The_Program.Properties.Resources.recipe;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 50);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 76);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "индейка в кисло сладком соусе под шубой гаспачи с майонезом";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox2.Location = new System.Drawing.Point(0, 17);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(200, 33);
-            this.richTextBox2.TabIndex = 9;
-            this.richTextBox2.Text = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 17);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Строка поиска";
+            this.panel_ListRecipe.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_ListRecipe_Paint);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel1.Controls.Add(this.richtb_TitleRecipe);
+            this.panel1.Controls.Add(this.panel_rtbController);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(200, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(600, 50);
             this.panel1.TabIndex = 1;
             // 
-            // richtb_TitleRecipe
+            // dgv_ingridTable
             // 
-            this.richtb_TitleRecipe.Enabled = false;
-            this.richtb_TitleRecipe.Location = new System.Drawing.Point(21, 3);
-            this.richtb_TitleRecipe.Name = "richtb_TitleRecipe";
-            this.richtb_TitleRecipe.Size = new System.Drawing.Size(556, 44);
-            this.richtb_TitleRecipe.TabIndex = 0;
-            this.richtb_TitleRecipe.Text = "";
+            this.dgv_ingridTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_ingridTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2});
+            this.dgv_ingridTable.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dgv_ingridTable.Location = new System.Drawing.Point(200, 50);
+            this.dgv_ingridTable.Name = "dgv_ingridTable";
+            this.dgv_ingridTable.Size = new System.Drawing.Size(300, 520);
+            this.dgv_ingridTable.TabIndex = 2;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Ингридиенты";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Кол-во";
+            this.Column2.Name = "Column2";
+            // 
+            // rtb_DescriptionRecipe
+            // 
+            this.rtb_DescriptionRecipe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_DescriptionRecipe.Location = new System.Drawing.Point(500, 50);
+            this.rtb_DescriptionRecipe.Name = "rtb_DescriptionRecipe";
+            this.rtb_DescriptionRecipe.Size = new System.Drawing.Size(300, 520);
+            this.rtb_DescriptionRecipe.TabIndex = 3;
+            this.rtb_DescriptionRecipe.Text = "";
+            // 
+            // panel_rtbController
+            // 
+            this.panel_rtbController.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel_rtbController.Controls.Add(this.rtb_TitleRecipe);
+            this.panel_rtbController.Location = new System.Drawing.Point(21, 3);
+            this.panel_rtbController.Name = "panel_rtbController";
+            this.panel_rtbController.Padding = new System.Windows.Forms.Padding(15, 7, 15, 5);
+            this.panel_rtbController.Size = new System.Drawing.Size(559, 41);
+            this.panel_rtbController.TabIndex = 0;
+            // 
+            // rtb_TitleRecipe
+            // 
+            this.rtb_TitleRecipe.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtb_TitleRecipe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_TitleRecipe.Enabled = false;
+            this.rtb_TitleRecipe.Location = new System.Drawing.Point(15, 7);
+            this.rtb_TitleRecipe.Name = "rtb_TitleRecipe";
+            this.rtb_TitleRecipe.Size = new System.Drawing.Size(529, 29);
+            this.rtb_TitleRecipe.TabIndex = 0;
+            this.rtb_TitleRecipe.Text = "";
+            this.rtb_TitleRecipe.TextChanged += new System.EventHandler(this.rtb_TitleRecipe_TextChanged);
             // 
             // ListRecipes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.rtb_DescriptionRecipe);
+            this.Controls.Add(this.dgv_ingridTable);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_ListRecipe);
             this.Name = "ListRecipes";
             this.Size = new System.Drawing.Size(800, 570);
-            this.panel_ListRecipe.ResumeLayout(false);
-            this.panel_ListRecipe.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ingridTable)).EndInit();
+            this.panel_rtbController.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -149,10 +137,11 @@
 
         private System.Windows.Forms.Panel panel_ListRecipe;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox richtb_TitleRecipe;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dgv_ingridTable;
+        private System.Windows.Forms.RichTextBox rtb_DescriptionRecipe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.Panel panel_rtbController;
+        private System.Windows.Forms.RichTextBox rtb_TitleRecipe;
     }
 }

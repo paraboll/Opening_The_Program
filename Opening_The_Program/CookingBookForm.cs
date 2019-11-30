@@ -80,21 +80,11 @@ namespace Opening_The_Program
             panel_AddRecipe.Visible = false;
             listRecipes.Visible = true;
 
-            
             SaveFile saveFile = new SaveFile();
             List<Recipe> data = saveFile.GetListRecipe();
 
-            foreach (var d in data)
-            {
-                Console.WriteLine(d.NameRecipe + " " + d.DescriptionOfRecipes);
-                foreach (var i in d.Ingredients)
-                {
-                    Console.WriteLine(i.NameIngredient + " " + i.Сount);
-                }
-                Console.WriteLine();
-            }
-            //ViewDataBase viewDataBase = new ViewDataBase();
-            //viewDataBase.DataBa();
+            listRecipes.addButton(data);
+
         }
 
         private void btn_addRacipe_Click(object sender, EventArgs e)

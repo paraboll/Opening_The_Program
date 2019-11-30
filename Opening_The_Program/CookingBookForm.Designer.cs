@@ -37,9 +37,9 @@
             this.btn_listOfRecipes = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_Title = new System.Windows.Forms.Label();
-            this.listRecipes = new Opening_The_Program.ListRecipes();
-            this.panel_AddRecipe = new Opening_The_Program.Panel_AddRecipe();
             this.panel_Note = new Opening_The_Program.Note();
+            this.panel_AddRecipe = new Opening_The_Program.Panel_AddRecipe();
+            this.listRecipes = new Opening_The_Program.ListRecipes();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -139,7 +139,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Red;
+            this.panel1.BackColor = System.Drawing.Color.DarkRed;
             this.panel1.Controls.Add(this.lbl_Title);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
@@ -152,21 +152,20 @@
             // 
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_Title.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.lbl_Title.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.lbl_Title.Location = new System.Drawing.Point(301, 0);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(327, 22);
             this.lbl_Title.TabIndex = 0;
             this.lbl_Title.Text = "Книга для Ваших рецептов, Bellatrissa";
             // 
-            // listRecipes
+            // panel_Note
             // 
-            this.listRecipes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listRecipes.Location = new System.Drawing.Point(200, 30);
-            this.listRecipes.Name = "listRecipes";
-            this.listRecipes.Size = new System.Drawing.Size(800, 570);
-            this.listRecipes.TabIndex = 2;
-            this.listRecipes.Load += new System.EventHandler(this.listRecipes1_Load);
+            this.panel_Note.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_Note.Location = new System.Drawing.Point(200, 30);
+            this.panel_Note.Name = "panel_Note";
+            this.panel_Note.Size = new System.Drawing.Size(800, 570);
+            this.panel_Note.TabIndex = 4;
             // 
             // panel_AddRecipe
             // 
@@ -177,13 +176,14 @@
             this.panel_AddRecipe.TabIndex = 3;
             this.panel_AddRecipe.Load += new System.EventHandler(this.panel_AddRecipe_Load);
             // 
-            // panel_Note
+            // listRecipes
             // 
-            this.panel_Note.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Note.Location = new System.Drawing.Point(200, 30);
-            this.panel_Note.Name = "panel_Note";
-            this.panel_Note.Size = new System.Drawing.Size(800, 570);
-            this.panel_Note.TabIndex = 4;
+            this.listRecipes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listRecipes.Location = new System.Drawing.Point(200, 30);
+            this.listRecipes.Name = "listRecipes";
+            this.listRecipes.Size = new System.Drawing.Size(800, 570);
+            this.listRecipes.TabIndex = 2;
+            this.listRecipes.Load += new System.EventHandler(this.listRecipes1_Load);
             // 
             // CookingBookForm
             // 

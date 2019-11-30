@@ -14,8 +14,6 @@ namespace BLCookingBook.Controller
     /// </summary>
     public class SaveFile
     {
-        //////------блок вывода в фаил--------/////
-
         /// <summary>
         /// метод вывода данных в фаил по определенному алгоритму.
         /// </summary>
@@ -57,7 +55,6 @@ namespace BLCookingBook.Controller
             if (!folderExists)
                 Directory.CreateDirectory(path);
         }
-        //////-----/блок вывода в фаил--------/////
         
         /// <summary>
         /// Метод распарсивает фаил Рецептов.
