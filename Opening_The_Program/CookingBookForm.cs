@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -99,9 +100,15 @@ namespace Opening_The_Program
             panel_Note.Visible = true;
             panel_AddRecipe.Visible = false;
             listRecipes.Visible = false;
+
+            panel_Note.LoadNode();
         }
 
         private void panel_AddRecipe_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void panel_Note_Load(object sender, EventArgs e)
         {
         }
     }

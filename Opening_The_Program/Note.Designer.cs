@@ -28,32 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.gb_Notes = new System.Windows.Forms.GroupBox();
+            this.rtb_Notes = new System.Windows.Forms.RichTextBox();
             this.btn_SaveNote = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.gb_Notes.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // gb_Notes
             // 
-            this.groupBox1.Controls.Add(this.btn_SaveNote);
-            this.groupBox1.Controls.Add(this.richTextBox1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(800, 570);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Заметки";
+            this.gb_Notes.Controls.Add(this.rtb_Notes);
+            this.gb_Notes.Controls.Add(this.btn_SaveNote);
+            this.gb_Notes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gb_Notes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gb_Notes.Location = new System.Drawing.Point(0, 0);
+            this.gb_Notes.Name = "gb_Notes";
+            this.gb_Notes.Size = new System.Drawing.Size(800, 570);
+            this.gb_Notes.TabIndex = 0;
+            this.gb_Notes.TabStop = false;
+            this.gb_Notes.Text = "Заметки";
             // 
-            // richTextBox1
+            // rtb_Notes
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(6, 25);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(788, 499);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.rtb_Notes.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.rtb_Notes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rtb_Notes.Location = new System.Drawing.Point(3, 22);
+            this.rtb_Notes.Name = "rtb_Notes";
+            this.rtb_Notes.Size = new System.Drawing.Size(794, 502);
+            this.rtb_Notes.TabIndex = 2;
+            this.rtb_Notes.Text = "";
             // 
             // btn_SaveNote
             // 
@@ -63,23 +65,24 @@
             this.btn_SaveNote.TabIndex = 1;
             this.btn_SaveNote.Text = "Сохранить";
             this.btn_SaveNote.UseVisualStyleBackColor = true;
+            this.btn_SaveNote.Click += new System.EventHandler(this.btn_SaveNote_Click);
             // 
             // Note
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gb_Notes);
             this.Name = "Note";
             this.Size = new System.Drawing.Size(800, 570);
-            this.groupBox1.ResumeLayout(false);
+            this.gb_Notes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gb_Notes;
         private System.Windows.Forms.Button btn_SaveNote;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtb_Notes;
     }
 }

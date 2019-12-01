@@ -37,9 +37,9 @@
             this.btn_listOfRecipes = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_Title = new System.Windows.Forms.Label();
-            this.panel_Note = new Opening_The_Program.Note();
             this.panel_AddRecipe = new Opening_The_Program.Panel_AddRecipe();
             this.listRecipes = new Opening_The_Program.ListRecipes();
+            this.panel_Note = new Opening_The_Program.Note();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -159,14 +159,6 @@
             this.lbl_Title.TabIndex = 0;
             this.lbl_Title.Text = "Книга для Ваших рецептов, Bellatrissa";
             // 
-            // panel_Note
-            // 
-            this.panel_Note.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Note.Location = new System.Drawing.Point(200, 30);
-            this.panel_Note.Name = "panel_Note";
-            this.panel_Note.Size = new System.Drawing.Size(800, 570);
-            this.panel_Note.TabIndex = 4;
-            // 
             // panel_AddRecipe
             // 
             this.panel_AddRecipe.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -184,6 +176,14 @@
             this.listRecipes.Size = new System.Drawing.Size(800, 570);
             this.listRecipes.TabIndex = 2;
             this.listRecipes.Load += new System.EventHandler(this.listRecipes1_Load);
+            // 
+            // panel_Note
+            // 
+            this.panel_Note.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_Note.Location = new System.Drawing.Point(200, 30);
+            this.panel_Note.Name = "panel_Note";
+            this.panel_Note.Size = new System.Drawing.Size(800, 570);
+            this.panel_Note.TabIndex = 4;
             // 
             // CookingBookForm
             // 

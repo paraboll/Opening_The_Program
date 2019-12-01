@@ -30,15 +30,15 @@
         {
             this.panel_ListRecipe = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_rtbController = new System.Windows.Forms.Panel();
+            this.rtb_TitleRecipe = new System.Windows.Forms.RichTextBox();
             this.dgv_ingridTable = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rtb_DescriptionRecipe = new System.Windows.Forms.RichTextBox();
-            this.panel_rtbController = new System.Windows.Forms.Panel();
-            this.rtb_TitleRecipe = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_ingridTable)).BeginInit();
             this.panel_rtbController.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ingridTable)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_ListRecipe
@@ -63,6 +63,29 @@
             this.panel1.Size = new System.Drawing.Size(600, 50);
             this.panel1.TabIndex = 1;
             // 
+            // panel_rtbController
+            // 
+            this.panel_rtbController.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel_rtbController.Controls.Add(this.rtb_TitleRecipe);
+            this.panel_rtbController.Location = new System.Drawing.Point(21, 3);
+            this.panel_rtbController.Name = "panel_rtbController";
+            this.panel_rtbController.Padding = new System.Windows.Forms.Padding(15, 7, 15, 5);
+            this.panel_rtbController.Size = new System.Drawing.Size(559, 41);
+            this.panel_rtbController.TabIndex = 0;
+            // 
+            // rtb_TitleRecipe
+            // 
+            this.rtb_TitleRecipe.BackColor = System.Drawing.Color.White;
+            this.rtb_TitleRecipe.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtb_TitleRecipe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_TitleRecipe.Location = new System.Drawing.Point(15, 7);
+            this.rtb_TitleRecipe.Name = "rtb_TitleRecipe";
+            this.rtb_TitleRecipe.ReadOnly = true;
+            this.rtb_TitleRecipe.Size = new System.Drawing.Size(529, 29);
+            this.rtb_TitleRecipe.TabIndex = 0;
+            this.rtb_TitleRecipe.Text = "";
+            this.rtb_TitleRecipe.TextChanged += new System.EventHandler(this.rtb_TitleRecipe_TextChanged);
+            // 
             // dgv_ingridTable
             // 
             this.dgv_ingridTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -72,8 +95,12 @@
             this.dgv_ingridTable.Dock = System.Windows.Forms.DockStyle.Left;
             this.dgv_ingridTable.Location = new System.Drawing.Point(200, 50);
             this.dgv_ingridTable.Name = "dgv_ingridTable";
+            this.dgv_ingridTable.ReadOnly = true;
+            this.dgv_ingridTable.RowHeadersVisible = false;
+            this.dgv_ingridTable.RowHeadersWidth = 55;
             this.dgv_ingridTable.Size = new System.Drawing.Size(300, 520);
             this.dgv_ingridTable.TabIndex = 2;
+            this.dgv_ingridTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_ingridTable_CellContentClick);
             // 
             // Column1
             // 
@@ -93,28 +120,7 @@
             this.rtb_DescriptionRecipe.Size = new System.Drawing.Size(300, 520);
             this.rtb_DescriptionRecipe.TabIndex = 3;
             this.rtb_DescriptionRecipe.Text = "";
-            // 
-            // panel_rtbController
-            // 
-            this.panel_rtbController.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel_rtbController.Controls.Add(this.rtb_TitleRecipe);
-            this.panel_rtbController.Location = new System.Drawing.Point(21, 3);
-            this.panel_rtbController.Name = "panel_rtbController";
-            this.panel_rtbController.Padding = new System.Windows.Forms.Padding(15, 7, 15, 5);
-            this.panel_rtbController.Size = new System.Drawing.Size(559, 41);
-            this.panel_rtbController.TabIndex = 0;
-            // 
-            // rtb_TitleRecipe
-            // 
-            this.rtb_TitleRecipe.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_TitleRecipe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtb_TitleRecipe.Enabled = false;
-            this.rtb_TitleRecipe.Location = new System.Drawing.Point(15, 7);
-            this.rtb_TitleRecipe.Name = "rtb_TitleRecipe";
-            this.rtb_TitleRecipe.Size = new System.Drawing.Size(529, 29);
-            this.rtb_TitleRecipe.TabIndex = 0;
-            this.rtb_TitleRecipe.Text = "";
-            this.rtb_TitleRecipe.TextChanged += new System.EventHandler(this.rtb_TitleRecipe_TextChanged);
+            this.rtb_DescriptionRecipe.TextChanged += new System.EventHandler(this.rtb_DescriptionRecipe_TextChanged);
             // 
             // ListRecipes
             // 
@@ -127,8 +133,8 @@
             this.Name = "ListRecipes";
             this.Size = new System.Drawing.Size(800, 570);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_ingridTable)).EndInit();
             this.panel_rtbController.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ingridTable)).EndInit();
             this.ResumeLayout(false);
 
         }

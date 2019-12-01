@@ -17,8 +17,11 @@ namespace Opening_The_Program
         public ListRecipes()
         {
             InitializeComponent();
-
-            if (!rtb_TitleRecipe.Enabled) rtb_TitleRecipe.BackColor = Color.Blue;
+            rtb_TitleRecipe.Font = new Font("Verdana", 9.75F, (FontStyle.Bold | FontStyle.Italic), GraphicsUnit.Point, 204);
+            rtb_DescriptionRecipe.Font = new Font("Verdana", 9.75F, (FontStyle.Bold | FontStyle.Italic), GraphicsUnit.Point, 204);
+            dgv_ingridTable.Font = new Font("Verdana", 9.75F, (FontStyle.Bold | FontStyle.Italic), GraphicsUnit.Point, 204);
+            dgv_ingridTable.Columns[0].Width = 150;
+            dgv_ingridTable.Columns[1].Width = 150;
         }
 
         public void addButton(List<Recipe> recipes)
@@ -79,6 +82,16 @@ namespace Opening_The_Program
         }
 
         private void rtb_TitleRecipe_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rtb_DescriptionRecipe_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgv_ingridTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
