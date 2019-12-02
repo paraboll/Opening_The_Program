@@ -37,8 +37,9 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rtb_DescriptionRecipe = new System.Windows.Forms.RichTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.tb_SearchResipe = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel_rtbController.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ingridTable)).BeginInit();
@@ -55,7 +56,6 @@
             this.panel_ListRecipe.Name = "panel_ListRecipe";
             this.panel_ListRecipe.Size = new System.Drawing.Size(200, 570);
             this.panel_ListRecipe.TabIndex = 0;
-            this.panel_ListRecipe.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_ListRecipe_Paint);
             // 
             // panel1
             // 
@@ -88,7 +88,6 @@
             this.rtb_TitleRecipe.Size = new System.Drawing.Size(529, 29);
             this.rtb_TitleRecipe.TabIndex = 0;
             this.rtb_TitleRecipe.Text = "";
-            this.rtb_TitleRecipe.TextChanged += new System.EventHandler(this.rtb_TitleRecipe_TextChanged);
             // 
             // dgv_ingridTable
             // 
@@ -125,10 +124,10 @@
             this.rtb_DescriptionRecipe.Size = new System.Drawing.Size(300, 520);
             this.rtb_DescriptionRecipe.TabIndex = 3;
             this.rtb_DescriptionRecipe.Text = "";
-            this.rtb_DescriptionRecipe.TextChanged += new System.EventHandler(this.rtb_DescriptionRecipe_TextChanged);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.tb_SearchResipe);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -136,6 +135,14 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(300, 106);
             this.panel2.TabIndex = 4;
+            // 
+            // tb_SearchResipe
+            // 
+            this.tb_SearchResipe.Location = new System.Drawing.Point(7, 23);
+            this.tb_SearchResipe.Name = "tb_SearchResipe";
+            this.tb_SearchResipe.Size = new System.Drawing.Size(100, 20);
+            this.tb_SearchResipe.TabIndex = 1;
+            this.tb_SearchResipe.TextChanged += new System.EventHandler(this.tb_SearchResipe_TextChanged);
             // 
             // label1
             // 
@@ -146,13 +153,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Строка поиска";
             // 
-            // tb_SearchResipe
+            // button1
             // 
-            this.tb_SearchResipe.Location = new System.Drawing.Point(7, 23);
-            this.tb_SearchResipe.Name = "tb_SearchResipe";
-            this.tb_SearchResipe.Size = new System.Drawing.Size(100, 20);
-            this.tb_SearchResipe.TabIndex = 1;
-            this.tb_SearchResipe.TextChanged += new System.EventHandler(this.tb_SearchResipe_TextChanged);
+            this.button1.Location = new System.Drawing.Point(173, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(99, 41);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Удалить этот рецепт";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ListRecipes
             // 
@@ -187,5 +196,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox tb_SearchResipe;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }

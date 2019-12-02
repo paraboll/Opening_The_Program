@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLCookingBook.Model;
+using BLCookingBook.Controller;
 
 namespace Opening_The_Program
 {
@@ -28,8 +29,8 @@ namespace Opening_The_Program
         {
             dataRecipe = new List<Recipe>(recipes);
 
+            //TODO: вынести в отдельный метод
             panel_ListRecipe.Controls.Clear();
-
             for (int i = 0; i < dataRecipe.Count; i++)
             {
                 Button button = new Button();
@@ -71,26 +72,6 @@ namespace Opening_The_Program
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel_ListRecipe_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void rtb_TitleRecipe_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rtb_DescriptionRecipe_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgv_ingridTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -98,53 +79,81 @@ namespace Opening_The_Program
 
         private void tb_SearchResipe_TextChanged(object sender, EventArgs e)
         {
-            var found = Search(dataRecipe);
-            Console.WriteLine(dataRecipe);
-            //var found = dataRecipe.FindAll(p => p.NameRecipe == tb_SearchResipe.Text);
-            Console.WriteLine("Всего найдено: {0}", found.Count);
-
-        }
-
-        /// <summary>
-        /// Метод,позволяющий организовать поиск в listBox.
-        /// Автор: Umnick
-        /// </summary>
-        /// <param name="listBox">ListBox в котором осуществляется поиск.</param>
-        public void Search(List<Recipe> dataRecipe)
-        {
-            //Объявление переменных и заполнение их для поиска
-            List<int> c = new List<int>();    //Колличество совпадений
-            int n = 0; //Сюда запишем наибольшее кол-во совпадений
-            int index = 0; //Сюда запишем индекс элемента в listbox,в котором найдено наибольшее кол-во совпадений
-            List<string> s = new List<string>();//будем переписывать все items из listbox сюда
-            /*for (int i = 0; i < listBox1.Items.Count; i++)  //цикл,в нем заполним наши списки
+            List<Recipe> TempListRecipe = new List<Recipe>();
+            string str = tb_SearchResipe.Text;
+            foreach (var item in dataRecipe)
             {
-                s.Add(listBox.Items[i].ToString());//заполняем items
-                c.Add(0);//заполняем наш счетчик нулями
-            }*/
-            //Основные циклы по работке с поиском
-            for (int i = 0; i < tb_SearchResipe.Text.Length; i++)//Цикл,им проходимся по каждому символу в строке поиска
-            {
-                for (int j = 0; j < s.Count; j++)//Цикл,проходимся по каждому item в нашей коллекции,ранее мы переписали туда все items
+                if (item.NameRecipe.Contains(str))
                 {
-                    for (int k = 0; k < s[j].Length; k++)//Цикл,посимвольно перебираем значение каждого items и ищем совпадения.
-                    {
-                        if (s[j][k] == tb_SearchResipe.Text[i])//Проверка на совпадение.Если один из символов items`а совпал с одним из символов строки поиска,увеличиваем наш счетчик
-                        {
-                            c[j] = ++c[j];//Увеличиваем счетчик,каждый индекс которого,соответствует каждому items в listBox1.
-                        }
-                    }
-                    if (c[j] > n)//Поиск найбольшего счетчика,тоесть items,в котором было обнаружено наибольшее кол-во совпадений.
-                    {
-                        n = c[j];//...
-                        index = j;//Записываем в переменную,индекс,как и говорилось ранее.
-                    }
+                    TempListRecipe.Add(item);
                 }
             }
-            if (n > 2)//Если совпадений больше двух(глупо конечно,но все таки),то:
+
+            //TODO: вынести в отдельный метод
+            panel_ListRecipe.Controls.Clear();
+            for (int i = 0; i < TempListRecipe.Count; i++)
             {
-                //listBox1.SetSelected(index, true);//Выделяем найденный индекс.
+                Button button = new Button();
+                button.Dock = DockStyle.Top;
+                button.FlatAppearance.BorderColor = Color.FromArgb(192, 0, 0);
+                button.FlatStyle = FlatStyle.Flat;
+                button.Font = new Font("Verdana", 9.75F, (FontStyle.Bold | FontStyle.Italic), GraphicsUnit.Point, 204);
+                button.ForeColor = SystemColors.ButtonFace;
+                button.Image = Properties.Resources.recipe;
+                button.ImageAlign = ContentAlignment.MiddleLeft;
+                button.Location = new Point(0, 76);
+                button.Name = "button" + i.ToString();
+                button.Size = new Size(200, 76);
+                button.TabIndex = 11;
+                button.Text = TempListRecipe[i].NameRecipe;
+                button.TextAlign = ContentAlignment.MiddleRight;
+                button.UseVisualStyleBackColor = true;
+                button.Click += ButtonOnClick;
+                panel_ListRecipe.Controls.Add(button);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<Recipe> TempListRecipe = new List<Recipe>();
+
+            var obj = (dataRecipe.FirstOrDefault(o => o.NameRecipe == rtb_TitleRecipe.Text));
+            if (obj != null)
+            {
+                int index = dataRecipe.IndexOf(obj);
+                dataRecipe.RemoveAt(index);
+            }
+            foreach (var item in dataRecipe)
+            {
+                TempListRecipe.Add(item);
+            }
+
+            SaveFile saveFile = new SaveFile();
+            saveFile.WriteInFile(TempListRecipe);
+
+            //TODO: вынести в отдельный метод
+            panel_ListRecipe.Controls.Clear();
+            for (int i = 0; i < TempListRecipe.Count; i++)
+            {
+                Button button = new Button();
+                button.Dock = DockStyle.Top;
+                button.FlatAppearance.BorderColor = Color.FromArgb(192, 0, 0);
+                button.FlatStyle = FlatStyle.Flat;
+                button.Font = new Font("Verdana", 9.75F, (FontStyle.Bold | FontStyle.Italic), GraphicsUnit.Point, 204);
+                button.ForeColor = SystemColors.ButtonFace;
+                button.Image = Properties.Resources.recipe;
+                button.ImageAlign = ContentAlignment.MiddleLeft;
+                button.Location = new Point(0, 76);
+                button.Name = "button" + i.ToString();
+                button.Size = new Size(200, 76);
+                button.TabIndex = 11;
+                button.Text = TempListRecipe[i].NameRecipe;
+                button.TextAlign = ContentAlignment.MiddleRight;
+                button.UseVisualStyleBackColor = true;
+                button.Click += ButtonOnClick;
+                panel_ListRecipe.Controls.Add(button);
+            }
+
         }
     }
 }

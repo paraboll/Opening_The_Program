@@ -15,7 +15,48 @@ namespace BLCookingBook.Controller
     public class SaveFile
     {
         /// <summary>
-        /// метод вывода данных в фаил по определенному алгоритму.
+        /// метод вывода листа в фаил по определенному алгоритму. Перезаписывает фаил.
+        /// </summary>
+        /// <param name="recipe"></param>
+        public void WriteInFile(List<Recipe> recipe)
+        {
+            //проверка на создание папка
+            CreateIfMissing("data");
+
+            //сохранение в фаил.
+            using (StreamWriter str = new StreamWriter("Data//Recipe.txt", false))
+            {
+                foreach (var r in recipe)
+                {
+                    str.WriteLine("NewRecipe");
+
+                    //Задаем имя рецепту
+                    str.WriteLine(r.NameRecipe);
+
+                    //Задаем описание рецепта
+                    str.WriteLine("startDescription");
+                    str.WriteLine(r.DescriptionOfRecipes);
+                    str.WriteLine("endDescription");
+                    //для удобства считывания - количество ингридиентов
+                    str.WriteLine(r.Ingredients.Count);
+
+                    //Задаем список ингридиентов: имя + количество
+                    foreach (var item in r.Ingredients)
+                    {
+                        str.WriteLine(item.NameIngredient);
+                        str.WriteLine(item.Сount);
+                    }
+                    str.WriteLine("------------");
+
+                    Console.WriteLine("Запись в фаил успешна --> Data//Recipe.txt");
+                    Console.WriteLine();
+
+                }
+            }
+        }
+
+        /// <summary>
+        /// метод вывода данных в фаил по определенному алгоритму. Добавляет элемент в конце файла.
         /// </summary>
         /// <param name="recipe">Новый рецепт</param>
         public void WriteInFile(Recipe recipe)
