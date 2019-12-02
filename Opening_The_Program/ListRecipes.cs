@@ -95,5 +95,56 @@ namespace Opening_The_Program
         {
 
         }
+
+        private void tb_SearchResipe_TextChanged(object sender, EventArgs e)
+        {
+            var found = Search(dataRecipe);
+            Console.WriteLine(dataRecipe);
+            //var found = dataRecipe.FindAll(p => p.NameRecipe == tb_SearchResipe.Text);
+            Console.WriteLine("Всего найдено: {0}", found.Count);
+
+        }
+
+        /// <summary>
+        /// Метод,позволяющий организовать поиск в listBox.
+        /// Автор: Umnick
+        /// </summary>
+        /// <param name="listBox">ListBox в котором осуществляется поиск.</param>
+        public void Search(List<Recipe> dataRecipe)
+        {
+            //Объявление переменных и заполнение их для поиска
+            List<int> c = new List<int>();    //Колличество совпадений
+            int n = 0; //Сюда запишем наибольшее кол-во совпадений
+            int index = 0; //Сюда запишем индекс элемента в listbox,в котором найдено наибольшее кол-во совпадений
+            List<string> s = new List<string>();//будем переписывать все items из listbox сюда
+            /*for (int i = 0; i < listBox1.Items.Count; i++)  //цикл,в нем заполним наши списки
+            {
+                s.Add(listBox.Items[i].ToString());//заполняем items
+                c.Add(0);//заполняем наш счетчик нулями
+            }*/
+            //Основные циклы по работке с поиском
+            for (int i = 0; i < tb_SearchResipe.Text.Length; i++)//Цикл,им проходимся по каждому символу в строке поиска
+            {
+                for (int j = 0; j < s.Count; j++)//Цикл,проходимся по каждому item в нашей коллекции,ранее мы переписали туда все items
+                {
+                    for (int k = 0; k < s[j].Length; k++)//Цикл,посимвольно перебираем значение каждого items и ищем совпадения.
+                    {
+                        if (s[j][k] == tb_SearchResipe.Text[i])//Проверка на совпадение.Если один из символов items`а совпал с одним из символов строки поиска,увеличиваем наш счетчик
+                        {
+                            c[j] = ++c[j];//Увеличиваем счетчик,каждый индекс которого,соответствует каждому items в listBox1.
+                        }
+                    }
+                    if (c[j] > n)//Поиск найбольшего счетчика,тоесть items,в котором было обнаружено наибольшее кол-во совпадений.
+                    {
+                        n = c[j];//...
+                        index = j;//Записываем в переменную,индекс,как и говорилось ранее.
+                    }
+                }
+            }
+            if (n > 2)//Если совпадений больше двух(глупо конечно,но все таки),то:
+            {
+                //listBox1.SetSelected(index, true);//Выделяем найденный индекс.
+            }
+        }
     }
 }

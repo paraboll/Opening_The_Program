@@ -30,8 +30,9 @@ namespace BLCookingBook.Controller
             str.WriteLine(recipe.NameRecipe);
 
             //Задаем описание рецепта
+            str.WriteLine("startDescription");
             str.WriteLine(recipe.DescriptionOfRecipes);
-
+            str.WriteLine("endDescription");
             //для удобства считывания - количество ингридиентов
             str.WriteLine(recipe.Ingredients.Count);
 
@@ -76,7 +77,17 @@ namespace BLCookingBook.Controller
                         recipe = new Recipe();
 
                         recipe.NameRecipe = reader.ReadLine();
-                        recipe.DescriptionOfRecipes = reader.ReadLine();
+                        string TextDescription = reader.ReadLine();
+                        if(TextDescription == "startDescription")
+                        {
+                            TextDescription = reader.ReadLine();
+                            while (TextDescription!= "endDescription")
+                            {
+                                recipe.DescriptionOfRecipes += TextDescription + "\n";
+                                TextDescription = reader.ReadLine();
+                            }
+                        }
+                        
                         int ingLength = Convert.ToInt32(reader.ReadLine());
                         recipe.Ingredients = new List<Ingredient>();
 

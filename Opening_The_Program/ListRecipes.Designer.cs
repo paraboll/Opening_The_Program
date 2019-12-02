@@ -36,9 +36,13 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rtb_DescriptionRecipe = new System.Windows.Forms.RichTextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tb_SearchResipe = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel_rtbController.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ingridTable)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_ListRecipe
@@ -92,13 +96,12 @@
             this.dgv_ingridTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            this.dgv_ingridTable.Dock = System.Windows.Forms.DockStyle.Left;
             this.dgv_ingridTable.Location = new System.Drawing.Point(200, 50);
             this.dgv_ingridTable.Name = "dgv_ingridTable";
             this.dgv_ingridTable.ReadOnly = true;
             this.dgv_ingridTable.RowHeadersVisible = false;
             this.dgv_ingridTable.RowHeadersWidth = 55;
-            this.dgv_ingridTable.Size = new System.Drawing.Size(300, 520);
+            this.dgv_ingridTable.Size = new System.Drawing.Size(300, 417);
             this.dgv_ingridTable.TabIndex = 2;
             this.dgv_ingridTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_ingridTable_CellContentClick);
             // 
@@ -106,15 +109,17 @@
             // 
             this.Column1.HeaderText = "Ингридиенты";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Кол-во";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // rtb_DescriptionRecipe
             // 
-            this.rtb_DescriptionRecipe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_DescriptionRecipe.Dock = System.Windows.Forms.DockStyle.Right;
             this.rtb_DescriptionRecipe.Location = new System.Drawing.Point(500, 50);
             this.rtb_DescriptionRecipe.Name = "rtb_DescriptionRecipe";
             this.rtb_DescriptionRecipe.Size = new System.Drawing.Size(300, 520);
@@ -122,10 +127,38 @@
             this.rtb_DescriptionRecipe.Text = "";
             this.rtb_DescriptionRecipe.TextChanged += new System.EventHandler(this.rtb_DescriptionRecipe_TextChanged);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.tb_SearchResipe);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(200, 464);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(300, 106);
+            this.panel2.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Строка поиска";
+            // 
+            // tb_SearchResipe
+            // 
+            this.tb_SearchResipe.Location = new System.Drawing.Point(7, 23);
+            this.tb_SearchResipe.Name = "tb_SearchResipe";
+            this.tb_SearchResipe.Size = new System.Drawing.Size(100, 20);
+            this.tb_SearchResipe.TabIndex = 1;
+            this.tb_SearchResipe.TextChanged += new System.EventHandler(this.tb_SearchResipe_TextChanged);
+            // 
             // ListRecipes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.rtb_DescriptionRecipe);
             this.Controls.Add(this.dgv_ingridTable);
             this.Controls.Add(this.panel1);
@@ -135,6 +168,8 @@
             this.panel1.ResumeLayout(false);
             this.panel_rtbController.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ingridTable)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -149,5 +184,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.Panel panel_rtbController;
         private System.Windows.Forms.RichTextBox rtb_TitleRecipe;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox tb_SearchResipe;
+        private System.Windows.Forms.Label label1;
     }
 }
