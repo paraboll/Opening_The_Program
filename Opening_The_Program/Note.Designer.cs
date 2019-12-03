@@ -1,4 +1,6 @@
-﻿namespace Opening_The_Program
+﻿using System.Drawing;
+
+namespace Opening_The_Program
 {
     partial class Note
     {
@@ -39,8 +41,7 @@
             this.gb_Notes.Controls.Add(this.rtb_Notes);
             this.gb_Notes.Controls.Add(this.btn_SaveNote);
             this.gb_Notes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gb_Notes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.gb_Notes.Location = new System.Drawing.Point(0, 0);
+            this.gb_Notes.Font = new Font("Verdana", 9.75F, (FontStyle.Bold | FontStyle.Italic), GraphicsUnit.Point, 204);
             this.gb_Notes.Name = "gb_Notes";
             this.gb_Notes.Size = new System.Drawing.Size(800, 570);
             this.gb_Notes.TabIndex = 0;

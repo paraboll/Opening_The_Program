@@ -1,4 +1,6 @@
-﻿namespace Opening_The_Program
+﻿using System.Drawing;
+
+namespace Opening_The_Program
 {
     partial class ListRecipes
     {
@@ -37,9 +39,9 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rtb_DescriptionRecipe = new System.Windows.Forms.RichTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tb_SearchResipe = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel_rtbController.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ingridTable)).BeginInit();
@@ -79,6 +81,7 @@
             // 
             // rtb_TitleRecipe
             // 
+            this.rtb_TitleRecipe.Font = new Font("Verdana", 9.75F, (FontStyle.Bold | FontStyle.Italic), GraphicsUnit.Point, 204);
             this.rtb_TitleRecipe.BackColor = System.Drawing.Color.White;
             this.rtb_TitleRecipe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtb_TitleRecipe.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -102,22 +105,26 @@
             this.dgv_ingridTable.RowHeadersWidth = 55;
             this.dgv_ingridTable.Size = new System.Drawing.Size(300, 417);
             this.dgv_ingridTable.TabIndex = 2;
-            this.dgv_ingridTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_ingridTable_CellContentClick);
+            this.dgv_ingridTable.Font = new Font("Verdana", 9.75F, (FontStyle.Bold | FontStyle.Italic), GraphicsUnit.Point, 204);
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Ингридиенты";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.Width = 150;
+           
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Кол-во";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.Width = 150;
             // 
             // rtb_DescriptionRecipe
             // 
+            this.rtb_DescriptionRecipe.Font = new Font("Verdana", 9.75F, (FontStyle.Bold | FontStyle.Italic), GraphicsUnit.Point, 204);
             this.rtb_DescriptionRecipe.Dock = System.Windows.Forms.DockStyle.Right;
             this.rtb_DescriptionRecipe.Location = new System.Drawing.Point(500, 50);
             this.rtb_DescriptionRecipe.Name = "rtb_DescriptionRecipe";
@@ -136,9 +143,19 @@
             this.panel2.Size = new System.Drawing.Size(300, 106);
             this.panel2.TabIndex = 4;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(173, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 67);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Удалить этот рецепт";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // tb_SearchResipe
             // 
-            this.tb_SearchResipe.Location = new System.Drawing.Point(7, 23);
+            this.tb_SearchResipe.Location = new System.Drawing.Point(9, 43);
             this.tb_SearchResipe.Name = "tb_SearchResipe";
             this.tb_SearchResipe.Size = new System.Drawing.Size(100, 20);
             this.tb_SearchResipe.TabIndex = 1;
@@ -147,21 +164,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 6);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(6, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.Size = new System.Drawing.Size(92, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Строка поиска";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(173, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 41);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Удалить этот рецепт";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ListRecipes
             // 

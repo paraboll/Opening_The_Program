@@ -17,41 +17,20 @@ namespace Opening_The_Program
         {
             InitializeComponent();
 
-            string dir = "Data";
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
-
-            gb_Notes.Font = new Font("Verdana", 9.75F, (FontStyle.Bold | FontStyle.Italic), GraphicsUnit.Point, 204);
-
-            //TODO: Что делать при загрузке если файла Notes.txt нет.
-            //using (FileStream fstream = new FileStream($"{dir}\\Notes.txt", FileMode.OpenOrCreate)){}
+            //создадим фаил если его нет.
+            if (!File.Exists("Notes.txt"))
+                File.Create("Notes.txt").Close(); 
         }
 
         private void btn_SaveNote_Click(object sender, EventArgs e)
         {
-            rtb_Notes.SaveFile("Data//Notes.txt", RichTextBoxStreamType.PlainText);
+            rtb_Notes.SaveFile("Notes.txt", RichTextBoxStreamType.PlainText);
             MessageBox.Show("Заметка изменена");
         }
 
         public void LoadNode()
         {
-            string dir = "Data";
-            if (!Directory.Exists(dir)) 
-            {
-                Directory.CreateDirectory(dir);
-            }
-
-            using (FileStream fstream = File.OpenRead($"{dir}\\Notes.txt"))
-            {
-                // преобразуем строку в байты
-                byte[] array = new byte[fstream.Length];
-                // считываем данные
-                fstream.Read(array, 0, array.Length);
-                // декодируем байты в строку
-                rtb_Notes.Text = System.Text.Encoding.Default.GetString(array);
-            }
+            rtb_Notes.LoadFile("Notes.txt", RichTextBoxStreamType.PlainText);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Opening_The_Program
             InitializeComponent();
             ingredients = new List<Ingredient>();
 
-            SetUpList();
+            //SetUpList();
         }
 
         private void btn_AddIngrid_Click(object sender, EventArgs e)

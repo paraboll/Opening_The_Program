@@ -20,11 +20,8 @@ namespace BLCookingBook.Controller
         /// <param name="recipe"></param>
         public void WriteInFile(List<Recipe> recipe)
         {
-            //проверка на создание папка
-            CreateIfMissing("data");
-
             //сохранение в фаил.
-            using (StreamWriter str = new StreamWriter("Data//Recipe.txt", false))
+            using (StreamWriter str = new StreamWriter("Recipe.txt", false))
             {
                 foreach (var r in recipe)
                 {
@@ -48,8 +45,8 @@ namespace BLCookingBook.Controller
                     }
                     str.WriteLine("------------");
 
-                    Console.WriteLine("Запись в фаил успешна --> Data//Recipe.txt");
-                    Console.WriteLine();
+                    //Console.WriteLine("Запись в фаил успешна --> Recipe.txt");
+                    //Console.WriteLine();
 
                 }
             }
@@ -61,10 +58,7 @@ namespace BLCookingBook.Controller
         /// <param name="recipe">Новый рецепт</param>
         public void WriteInFile(Recipe recipe)
         {
-            //проверка на создание папка
-            CreateIfMissing("data");
-
-            StreamWriter str = new StreamWriter("Data//Recipe.txt", true);
+            StreamWriter str = new StreamWriter("Recipe.txt", true);
             str.WriteLine("NewRecipe");
 
             //Задаем имя рецепту
@@ -86,16 +80,8 @@ namespace BLCookingBook.Controller
             str.WriteLine("------------");
 
             str.Close();
-            Console.WriteLine("Запись в фаил успешна --> Data//Recipe.txt");
-            Console.WriteLine();
-        }
-
-        // метод проверяет существует ли уже папка с введенным именем и если нет - создает ее
-        private void CreateIfMissing(string path)
-        {
-            bool folderExists = Directory.Exists(path);
-            if (!folderExists)
-                Directory.CreateDirectory(path);
+            //Console.WriteLine("Запись в фаил успешна --> Recipe.txt");
+            //Console.WriteLine();
         }
         
         /// <summary>
@@ -108,7 +94,7 @@ namespace BLCookingBook.Controller
             Recipe recipe;
             string newRecipe;
 
-            using (var reader = new StreamReader("Data//Recipe.txt"))
+            using (var reader = new StreamReader("Recipe.txt"))
             {
                 while (reader.Peek() != -1)
                 {
@@ -145,12 +131,12 @@ namespace BLCookingBook.Controller
                         if (end == "------------")
                         {
                             recipes.Add(recipe);
-                            Console.WriteLine("Рецепт считан успешно");
+                            //Console.WriteLine("Рецепт считан успешно");
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Ошибка");
+                       // Console.WriteLine("Ошибка");
                     }
 
 
@@ -158,7 +144,5 @@ namespace BLCookingBook.Controller
                 return recipes;
             }
         }
-
-        
     }
 }
