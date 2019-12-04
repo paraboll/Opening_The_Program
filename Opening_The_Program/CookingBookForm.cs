@@ -111,5 +111,10 @@ namespace Opening_The_Program
         private void panel_Note_Load(object sender, EventArgs e)
         {
         }
+
+        private void panel_Note_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

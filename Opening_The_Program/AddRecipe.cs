@@ -30,8 +30,11 @@ namespace Opening_The_Program
             ingredients.Add(new Ingredient()
             {
                 NameIngredient = tb_NameIngrid.Text,
-                Сount = tb_countIngrid.Text
+                Сount = tb_CountIngrid.Text
             });
+
+            tb_NameIngrid.Text = "";
+            tb_CountIngrid.Text = "";
 
             //обновляем комбобокс
             clearCombobox();
@@ -60,7 +63,7 @@ namespace Opening_The_Program
                 //обновляем комбобокс
                 clearCombobox();
             }
-
+            //cbx_NameIngr.Text = tb_nameIngr.Text;
             tb_nameIngr.Text = "";
             tb_countIngr.Text = "";
         }
@@ -89,7 +92,6 @@ namespace Opening_The_Program
                 cbx_NameIngr.Items.Add(ingredients[count].NameIngredient);
                 count++;
             }
-
             tb_nameIngr.Text = "";
             tb_countIngr.Text = "";
         }
@@ -159,6 +161,12 @@ namespace Opening_The_Program
 
                 SaveFile saveFile = new SaveFile();
                 saveFile.WriteInFile(recipe);
+
+                //очищяем форму
+                cbx_NameIngr.Items.Clear();
+                tb_TitleRecipe.Text = "";
+                rtb_DescriptionRecie.Text = "";
+
                 MessageBox.Show("Добавлен новый рецепт");
             }
             catch

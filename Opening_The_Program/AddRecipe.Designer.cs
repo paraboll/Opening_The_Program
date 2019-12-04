@@ -34,7 +34,7 @@
             this.tb_NameIngrid = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tb_countIngrid = new System.Windows.Forms.TextBox();
+            this.tb_CountIngrid = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_AddIngrid = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -103,7 +103,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.tb_countIngrid);
+            this.groupBox2.Controls.Add(this.tb_CountIngrid);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.btn_AddIngrid);
             this.groupBox2.Controls.Add(this.label2);
@@ -116,12 +116,12 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ингридиенты";
             // 
-            // tb_countIngrid
+            // tb_CountIngrid
             // 
-            this.tb_countIngrid.Location = new System.Drawing.Point(188, 68);
-            this.tb_countIngrid.Name = "tb_countIngrid";
-            this.tb_countIngrid.Size = new System.Drawing.Size(159, 26);
-            this.tb_countIngrid.TabIndex = 6;
+            this.tb_CountIngrid.Location = new System.Drawing.Point(188, 68);
+            this.tb_CountIngrid.Name = "tb_CountIngrid";
+            this.tb_CountIngrid.Size = new System.Drawing.Size(159, 26);
+            this.tb_CountIngrid.TabIndex = 6;
             // 
             // label3
             // 
@@ -304,7 +304,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btn_AddIngrid;
-        private System.Windows.Forms.TextBox tb_countIngrid;
+        private System.Windows.Forms.TextBox tb_CountIngrid;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label4;

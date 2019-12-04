@@ -15,7 +15,8 @@ namespace Opening_The_Program
 {
     public partial class ListRecipes : UserControl
     {
-        List<Recipe> dataRecipe;
+        protected List<Recipe> dataRecipe;
+
         public ListRecipes()
         {
             InitializeComponent();
@@ -106,6 +107,52 @@ namespace Opening_The_Program
                 button.Click += ButtonOnClick;
                 panel_ListRecipe.Controls.Add(button);
             }
+        }
+
+        private void btn_later_Click(object sender, EventArgs e)
+        {
+            panel_RaitingRecipe.Visible = false;
+
+            cb_TimeCooking.Text = "";
+            cb_Taste.Text = "";
+            cb_DifficultlyRecipe.Text = "";
+        }
+
+        private void btn_AssessRecipe_Click(object sender, EventArgs e)
+        {
+            panel_RaitingRecipe.Visible = true;
+        }
+
+        private void btn_Rating_Click(object sender, EventArgs e)
+        {
+            var obj = (dataRecipe.FirstOrDefault(o => o.NameRecipe == rtb_TitleRecipe.Text));
+            if (obj != null)
+            {
+                RateRecipe(obj);
+            }
+
+            panel_RaitingRecipe.Visible = false;
+        }
+
+        private void RateRecipe(Recipe recipe)
+        {
+            if (cb_DifficultlyRecipe.Text != "")
+            {
+                recipe.RecipeRatingByScore = cb_DifficultlyRecipe.Text;
+            }
+            else { Console.WriteLine("оценки сложности нет"); }
+
+            if (cb_Taste.Text != "")
+            {
+                recipe.RecipeRatingByTaste = cb_Taste.Text;
+            }
+            else { Console.WriteLine("оценки вкуса нет"); }
+
+            if (cb_TimeCooking.Text != "")
+            {
+                recipe.RecipeRatingByСookingTime = cb_TimeCooking.Text;
+            }
+            else { Console.WriteLine("оценки времеми нет"); }
         }
     }
 }

@@ -16,5 +16,12 @@ namespace BLCookingBook.Model
         public string DescriptionOfRecipes { get; set; }
 
         public List<Ingredient> Ingredients { get; set; } 
+
+        //сложность по 10тибальной шкале
+        public string RecipeRatingByScore { get; set; }
+
+        public string RecipeRatingByTaste { get; set; }
+
+        public string RecipeRatingByСookingTime { get; set; }
     }
 }

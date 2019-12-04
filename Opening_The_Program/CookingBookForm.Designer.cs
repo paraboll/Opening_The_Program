@@ -184,6 +184,7 @@
             this.panel_Note.Name = "panel_Note";
             this.panel_Note.Size = new System.Drawing.Size(800, 570);
             this.panel_Note.TabIndex = 4;
+            this.panel_Note.Load += new System.EventHandler(this.panel_Note_Load_1);
             // 
             // CookingBookForm
             // 
