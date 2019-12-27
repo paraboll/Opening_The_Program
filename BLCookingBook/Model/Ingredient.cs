@@ -14,5 +14,22 @@ namespace BLCookingBook.Model
         public string NameIngredient { get; set; }
 
         public string Сount { get; set; }
+
+        public Ingredient(){}
+
+        public Ingredient(string nameIngredient, string count)
+        {
+            if(string.IsNullOrEmpty(nameIngredient))
+            {
+                Console.WriteLine("nameIngredient пустая"); 
+            }
+            if(string.IsNullOrEmpty(count))
+            {
+                Console.WriteLine("count пустая"); 
+            }
+
+            NameIngredient = nameIngredient;
+            Сount = count;
+        }
     }
 }

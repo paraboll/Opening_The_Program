@@ -95,8 +95,8 @@ namespace Opening_The_Program
                 button.FlatStyle = FlatStyle.Flat;
                 button.Font = new Font("Verdana", 9.75F, (FontStyle.Bold | FontStyle.Italic), GraphicsUnit.Point, 204);
                 button.ForeColor = SystemColors.ButtonFace;
-                button.Image = Properties.Resources.recipe;
-                button.ImageAlign = ContentAlignment.MiddleLeft;
+                //button.Image = Properties.Resources.recipe;
+                //button.ImageAlign = ContentAlignment.MiddleLeft;
                 button.Location = new Point(0, 76);
                 button.Name = "button" + i.ToString();
                 button.Size = new Size(200, 76);
@@ -115,7 +115,6 @@ namespace Opening_The_Program
 
             cb_TimeCooking.Text = "";
             cb_Taste.Text = "";
-            cb_DifficultlyRecipe.Text = "";
         }
 
         private void btn_AssessRecipe_Click(object sender, EventArgs e)
@@ -136,15 +135,9 @@ namespace Opening_The_Program
 
         private void RateRecipe(Recipe recipe)
         {
-            if (cb_DifficultlyRecipe.Text != "")
-            {
-                recipe.RecipeRatingByScore = cb_DifficultlyRecipe.Text;
-            }
-            else { Console.WriteLine("оценки сложности нет"); }
-
             if (cb_Taste.Text != "")
             {
-                recipe.RecipeRatingByTaste = cb_Taste.Text;
+                recipe.RecipeRatingByTaste = Convert.ToInt32(cb_Taste.Text);
             }
             else { Console.WriteLine("оценки вкуса нет"); }
 
@@ -153,6 +146,11 @@ namespace Opening_The_Program
                 recipe.RecipeRatingByСookingTime = cb_TimeCooking.Text;
             }
             else { Console.WriteLine("оценки времеми нет"); }
+        }
+
+        private void labelRatingRecipe_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

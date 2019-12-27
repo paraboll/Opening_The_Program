@@ -91,12 +91,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RatingRecipe.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="RatingRecipe.Designer.cs">
-      <DependentUpon>RatingRecipe.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AddRecipe.resx">
       <DependentUpon>AddRecipe.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,9 +116,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RatingRecipe.resx">
-      <DependentUpon>RatingRecipe.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ControllerIngredient.cs" />
+    <Compile Include="Controller\ControllerRecipe.cs" />
     <Compile Include="Controller\SaveFile.cs" />
     <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\Recipe.cs" />

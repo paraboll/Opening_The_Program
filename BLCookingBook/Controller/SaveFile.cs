@@ -34,6 +34,10 @@ namespace BLCookingBook.Controller
                     str.WriteLine("startDescription");
                     str.WriteLine(r.DescriptionOfRecipes);
                     str.WriteLine("endDescription");
+
+                    str.WriteLine(r.RecipeRatingByTaste);
+                    str.WriteLine(r.RecipeRatingByСookingTime);
+
                     //для удобства считывания - количество ингридиентов
                     str.WriteLine(r.Ingredients.Count);
 
@@ -68,6 +72,10 @@ namespace BLCookingBook.Controller
             str.WriteLine("startDescription");
             str.WriteLine(recipe.DescriptionOfRecipes);
             str.WriteLine("endDescription");
+
+            str.WriteLine(recipe.RecipeRatingByTaste);
+            str.WriteLine(recipe.RecipeRatingByСookingTime);
+
             //для удобства считывания - количество ингридиентов
             str.WriteLine(recipe.Ingredients.Count);
 
@@ -114,7 +122,10 @@ namespace BLCookingBook.Controller
                                 TextDescription = reader.ReadLine();
                             }
                         }
-                        
+
+                        recipe.RecipeRatingByTaste = Convert.ToInt32(reader.ReadLine());
+                        recipe.RecipeRatingByСookingTime = reader.ReadLine();
+
                         int ingLength = Convert.ToInt32(reader.ReadLine());
                         recipe.Ingredients = new List<Ingredient>();
 

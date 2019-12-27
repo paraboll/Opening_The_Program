@@ -45,14 +45,12 @@ namespace Opening_The_Program
             this.tb_SearchResipe = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel_RaitingRecipe = new System.Windows.Forms.Panel();
-            this.cb_DifficultlyRecipe = new System.Windows.Forms.ComboBox();
             this.cb_Taste = new System.Windows.Forms.ComboBox();
             this.btn_Rating = new System.Windows.Forms.Button();
             this.btn_later = new System.Windows.Forms.Button();
             this.cb_TimeCooking = new System.Windows.Forms.ComboBox();
             this.lbl_TimeCooking = new System.Windows.Forms.Label();
             this.lbl_Taste = new System.Windows.Forms.Label();
-            this.lbl_DifficultlyRecipe = new System.Windows.Forms.Label();
             this.labelRatingRecipe = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel_rtbController.SuspendLayout();
@@ -104,7 +102,6 @@ namespace Opening_The_Program
             this.rtb_TitleRecipe.Size = new System.Drawing.Size(529, 29);
             this.rtb_TitleRecipe.TabIndex = 0;
             this.rtb_TitleRecipe.Text = "";
-            this.rtb_TitleRecipe.SelectionAlignment = HorizontalAlignment.Center;
             // 
             // dgv_ingridTable
             // 
@@ -199,57 +196,37 @@ namespace Opening_The_Program
             // 
             // panel_RaitingRecipe
             // 
-            this.panel_RaitingRecipe.Controls.Add(this.cb_DifficultlyRecipe);
             this.panel_RaitingRecipe.Controls.Add(this.cb_Taste);
             this.panel_RaitingRecipe.Controls.Add(this.btn_Rating);
             this.panel_RaitingRecipe.Controls.Add(this.btn_later);
             this.panel_RaitingRecipe.Controls.Add(this.cb_TimeCooking);
             this.panel_RaitingRecipe.Controls.Add(this.lbl_TimeCooking);
             this.panel_RaitingRecipe.Controls.Add(this.lbl_Taste);
-            this.panel_RaitingRecipe.Controls.Add(this.lbl_DifficultlyRecipe);
             this.panel_RaitingRecipe.Controls.Add(this.labelRatingRecipe);
-            this.panel_RaitingRecipe.Location = new System.Drawing.Point(206, 345);
+            this.panel_RaitingRecipe.Location = new System.Drawing.Point(206, 364);
             this.panel_RaitingRecipe.Name = "panel_RaitingRecipe";
-            this.panel_RaitingRecipe.Size = new System.Drawing.Size(200, 166);
+            this.panel_RaitingRecipe.Size = new System.Drawing.Size(200, 147);
             this.panel_RaitingRecipe.TabIndex = 5;
             this.panel_RaitingRecipe.Visible = false;
             // 
-            // cb_DifficultlyRecipe
+            // cb_Taste
             // 
-            this.cb_DifficultlyRecipe.FormattingEnabled = true;
-            this.cb_DifficultlyRecipe.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
+            this.cb_Taste.FormattingEnabled = true;
+            this.cb_Taste.Items.AddRange(new object[] {
             "5",
             "6",
             "7",
             "8",
             "9",
             "10"});
-            this.cb_DifficultlyRecipe.Location = new System.Drawing.Point(84, 29);
-            this.cb_DifficultlyRecipe.Name = "cb_DifficultlyRecipe";
-            this.cb_DifficultlyRecipe.Size = new System.Drawing.Size(100, 21);
-            this.cb_DifficultlyRecipe.TabIndex = 37;
-            // 
-            // cb_Taste
-            // 
-            this.cb_Taste.FormattingEnabled = true;
-            this.cb_Taste.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.cb_Taste.Location = new System.Drawing.Point(84, 56);
+            this.cb_Taste.Location = new System.Drawing.Point(83, 36);
             this.cb_Taste.Name = "cb_Taste";
             this.cb_Taste.Size = new System.Drawing.Size(100, 21);
             this.cb_Taste.TabIndex = 36;
             // 
             // btn_Rating
             // 
-            this.btn_Rating.Location = new System.Drawing.Point(109, 118);
+            this.btn_Rating.Location = new System.Drawing.Point(108, 98);
             this.btn_Rating.Name = "btn_Rating";
             this.btn_Rating.Size = new System.Drawing.Size(75, 42);
             this.btn_Rating.TabIndex = 35;
@@ -259,7 +236,7 @@ namespace Opening_The_Program
             // 
             // btn_later
             // 
-            this.btn_later.Location = new System.Drawing.Point(19, 118);
+            this.btn_later.Location = new System.Drawing.Point(18, 98);
             this.btn_later.Name = "btn_later";
             this.btn_later.Size = new System.Drawing.Size(75, 42);
             this.btn_later.TabIndex = 34;
@@ -274,7 +251,7 @@ namespace Opening_The_Program
             "быстро",
             "средне",
             "долго"});
-            this.cb_TimeCooking.Location = new System.Drawing.Point(84, 83);
+            this.cb_TimeCooking.Location = new System.Drawing.Point(83, 63);
             this.cb_TimeCooking.Name = "cb_TimeCooking";
             this.cb_TimeCooking.Size = new System.Drawing.Size(100, 21);
             this.cb_TimeCooking.TabIndex = 33;
@@ -282,7 +259,7 @@ namespace Opening_The_Program
             // lbl_TimeCooking
             // 
             this.lbl_TimeCooking.AutoSize = true;
-            this.lbl_TimeCooking.Location = new System.Drawing.Point(32, 86);
+            this.lbl_TimeCooking.Location = new System.Drawing.Point(31, 66);
             this.lbl_TimeCooking.Name = "lbl_TimeCooking";
             this.lbl_TimeCooking.Size = new System.Drawing.Size(40, 13);
             this.lbl_TimeCooking.TabIndex = 32;
@@ -291,29 +268,21 @@ namespace Opening_The_Program
             // lbl_Taste
             // 
             this.lbl_Taste.AutoSize = true;
-            this.lbl_Taste.Location = new System.Drawing.Point(41, 59);
+            this.lbl_Taste.Location = new System.Drawing.Point(40, 39);
             this.lbl_Taste.Name = "lbl_Taste";
             this.lbl_Taste.Size = new System.Drawing.Size(31, 13);
             this.lbl_Taste.TabIndex = 31;
             this.lbl_Taste.Text = "Вкус";
             // 
-            // lbl_DifficultlyRecipe
-            // 
-            this.lbl_DifficultlyRecipe.AutoSize = true;
-            this.lbl_DifficultlyRecipe.Location = new System.Drawing.Point(16, 29);
-            this.lbl_DifficultlyRecipe.Name = "lbl_DifficultlyRecipe";
-            this.lbl_DifficultlyRecipe.Size = new System.Drawing.Size(63, 13);
-            this.lbl_DifficultlyRecipe.TabIndex = 30;
-            this.lbl_DifficultlyRecipe.Text = "Сложность";
-            // 
             // labelRatingRecipe
             // 
             this.labelRatingRecipe.AutoSize = true;
-            this.labelRatingRecipe.Location = new System.Drawing.Point(58, 6);
+            this.labelRatingRecipe.Location = new System.Drawing.Point(56, 11);
             this.labelRatingRecipe.Name = "labelRatingRecipe";
             this.labelRatingRecipe.Size = new System.Drawing.Size(89, 13);
             this.labelRatingRecipe.TabIndex = 29;
             this.labelRatingRecipe.Text = "Оцените Рецепт";
+            this.labelRatingRecipe.Click += new System.EventHandler(this.labelRatingRecipe_Click);
             // 
             // ListRecipes
             // 
@@ -354,14 +323,12 @@ namespace Opening_The_Program
         private System.Windows.Forms.Button btn_DeleteRecipe;
         private Button btn_AssessRecipe;
         private Panel panel_RaitingRecipe;
-        private ComboBox cb_DifficultlyRecipe;
         private ComboBox cb_Taste;
         private Button btn_Rating;
         private Button btn_later;
         private ComboBox cb_TimeCooking;
         private Label lbl_TimeCooking;
         private Label lbl_Taste;
-        private Label lbl_DifficultlyRecipe;
         private Label labelRatingRecipe;
     }
 }
