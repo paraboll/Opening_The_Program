@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>unnamed1.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\unnamed1.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -45,9 +45,17 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.6.8\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,51 +67,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddRecipe.cs">
+    <Compile Include="FORMS\AddRecipe.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AddRecipe.Designer.cs">
+    <Compile Include="FORMS\AddRecipe.Designer.cs">
       <DependentUpon>AddRecipe.cs</DependentUpon>
     </Compile>
-    <Compile Include="CookingBookForm.cs">
+    <Compile Include="FORMS\CookingBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CookingBookForm.Designer.cs">
+    <Compile Include="FORMS\CookingBookForm.Designer.cs">
       <DependentUpon>CookingBookForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListRecipes.cs">
+    <Compile Include="FORMS\ListRecipes.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ListRecipes.Designer.cs">
+    <Compile Include="FORMS\ListRecipes.Designer.cs">
       <DependentUpon>ListRecipes.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoadingForm.cs">
+    <Compile Include="FORMS\LoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoadingForm.Designer.cs">
+    <Compile Include="FORMS\LoadingForm.Designer.cs">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Note.cs">
+    <Compile Include="FORMS\Note.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Note.Designer.cs">
+    <Compile Include="FORMS\Note.Designer.cs">
       <DependentUpon>Note.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddRecipe.resx">
+    <EmbeddedResource Include="FORMS\AddRecipe.resx">
       <DependentUpon>AddRecipe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CookingBookForm.resx">
+    <EmbeddedResource Include="FORMS\CookingBookForm.resx">
       <DependentUpon>CookingBookForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListRecipes.resx">
+    <EmbeddedResource Include="FORMS\ListRecipes.resx">
       <DependentUpon>ListRecipes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoadingForm.resx">
+    <EmbeddedResource Include="FORMS\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Note.resx">
+    <EmbeddedResource Include="FORMS\Note.resx">
       <DependentUpon>Note.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -116,6 +124,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -133,9 +147,7 @@
   <ItemGroup>
     <None Include="Resources\Exit.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Image\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\list.png" />
   </ItemGroup>
@@ -158,8 +170,7 @@
     <None Include="Resources\note.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="unnamed.ico" />
-    <Content Include="unnamed1.ico" />
+    <Content Include="Resources\unnamed1.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

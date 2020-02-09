@@ -203,7 +203,7 @@ namespace Opening_The_Program
             this.panel_RaitingRecipe.Controls.Add(this.lbl_TimeCooking);
             this.panel_RaitingRecipe.Controls.Add(this.lbl_Taste);
             this.panel_RaitingRecipe.Controls.Add(this.labelRatingRecipe);
-            this.panel_RaitingRecipe.Location = new System.Drawing.Point(206, 364);
+            this.panel_RaitingRecipe.Location = new System.Drawing.Point(206, 370);
             this.panel_RaitingRecipe.Name = "panel_RaitingRecipe";
             this.panel_RaitingRecipe.Size = new System.Drawing.Size(200, 147);
             this.panel_RaitingRecipe.TabIndex = 5;

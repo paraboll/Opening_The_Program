@@ -5,31 +5,44 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NLog;
 
 namespace Opening_The_Program
 {
     static class Program
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         /// <summary>
-        /// Главная точка входа для приложения.
+        /// Точка входа приложения.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
 
-            LoadingForm first = new LoadingForm();
-            DateTime end = DateTime.Now + TimeSpan.FromSeconds(5);
-            first.Show();
+                LoadingForm first = new LoadingForm();
+                DateTime end = DateTime.Now + TimeSpan.FromSeconds(5);
+                first.Show();
 
-            while (end > DateTime.Now) Application.DoEvents();
+                while (end > DateTime.Now) Application.DoEvents();
 
-            first.Close();
-            first.Dispose();
-            //инициализируем БД при запускепрограммы
-            //Database.SetInitializer(new DBInitialization());
-            Application.Run(new CookingBookForm());
+                first.Close();
+                first.Dispose();
+
+                //инициализируем БД при запускепрограммы
+                //Database.SetInitializer(new DBInitialization());
+                Application.Run(new CookingBookForm());
+                logger.Info("Main | Приложение успешно запущено.");
+            }
+            catch(Exception exp)
+            {
+                logger.Fatal("Main | Ошибка запуска: " + exp);
+            }
+            
         }
     }
 }

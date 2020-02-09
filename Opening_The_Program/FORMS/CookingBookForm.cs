@@ -20,11 +20,6 @@ namespace Opening_The_Program
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -70,10 +65,6 @@ namespace Opening_The_Program
         }
         #endregion
 
-        private void listRecipes1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_listOfRecipes_Click(object sender, EventArgs e)
         {
@@ -104,15 +95,7 @@ namespace Opening_The_Program
             panel_Note.LoadNode();
         }
 
-        private void panel_AddRecipe_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void panel_Note_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void panel_Note_Load_1(object sender, EventArgs e)
+        private void panelMenu_Paint(object sender, PaintEventArgs e)
         {
 
         }

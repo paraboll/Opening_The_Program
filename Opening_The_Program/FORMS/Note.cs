@@ -19,7 +19,8 @@ namespace Opening_The_Program
 
             //создадим фаил если его нет.
             if (!File.Exists("Notes.txt"))
-                File.Create("Notes.txt").Close(); 
+                File.Create("Notes.txt").Close();
+            LoadNode();
         }
 
         private void btn_SaveNote_Click(object sender, EventArgs e)
