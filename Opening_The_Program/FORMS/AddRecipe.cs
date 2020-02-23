@@ -13,12 +13,18 @@ using NLog;
 
 namespace Opening_The_Program
 {
+    /// <summary>
+    /// Класс описывает интерфейс(форму) который отвечает за создание рецепта.
+    /// </summary>
     public partial class Panel_AddRecipe : UserControl
     {
-        ControllerIngredient controllerIngredient;
-        ControllerRecipe controllerRecipe;
+        private ControllerIngredient controllerIngredient;
+        private ControllerRecipe controllerRecipe;
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
+        /// <summary>
+        /// Конструктор без параметор.
+        /// </summary>
         public Panel_AddRecipe()
         {
             InitializeComponent();
@@ -30,14 +36,64 @@ namespace Opening_The_Program
 
         private void btn_AddIngrid_Click(object sender, EventArgs e)
         {
-            //TODO: Добавить проверку на null + вывести в лог ошибк
-            controllerIngredient.AddIngridient(tb_NameIngrid.Text, tb_CountIngrid.Text);
+            //устанавливаем цвет textBox
+            tb_NameIngrid.BackColor = Color.White;
+            tb_CountIngrid.BackColor = Color.White;
 
-            tb_NameIngrid.Text = "";
-            tb_CountIngrid.Text = "";
+            //проверка на пустые поля в тексбоксе
+            bool flagTb_NameIngrid =    false;
+            bool flagTb_CountIngrid =   false;
 
-            //обновляем комбобокс
-            rewriteCombobox();
+            if (tb_NameIngrid.Text.Length <= 0) flagTb_NameIngrid =     true;
+            if (tb_CountIngrid.Text.Length <= 0) flagTb_CountIngrid =   true;
+
+
+            //Хранит все незаполненые поля и предупреждения
+            //Словарь позволит вылить зеленым все заполненые элементы и красным незаполненые.
+            var messageError = new Dictionary<object, string>();
+            if (flagTb_NameIngrid) messageError.Add(tb_NameIngrid, "Вы не ввели ингридиент. \n");
+            if (flagTb_CountIngrid) messageError.Add(tb_CountIngrid, "Вы не ввели количество ингридиентов. \n");
+
+            if (flagTb_NameIngrid || flagTb_CountIngrid)
+            {
+                ErrorMessage(messageError);
+            }
+            else
+            {
+                controllerIngredient.AddIngridient(tb_NameIngrid.Text, tb_CountIngrid.Text);
+
+                tb_NameIngrid.Text = "";
+                tb_CountIngrid.Text = "";
+
+                //обновляем комбобокс
+                rewriteCombobox();
+                MessageBox.Show("Ингридиент успешно добавлен.");
+            }
+        }
+
+        /// <summary>
+        /// Метод выведит предупреждение о незаполненых полях на форме.
+        /// </summary>
+        /// <param name="_messageError">Словарь незополененых полей</param>
+        private void ErrorMessage(Dictionary<object, string> _messageError)
+        {
+            string messageError = "";
+            foreach (var item in _messageError)
+            {
+                TextBox temp = (TextBox)item.Key;
+
+                //TODO: переписать через вызов метода SetTextBoxBackColor
+                temp.BackColor = Color.Red;
+                messageError += item.Value;
+            }
+
+            MessageBox.Show(messageError);
+            return;
+        }
+
+        private void SetTextBoxBackColor(TextBox _tb, Color _color)
+        {
+            _tb.BackColor = _color;
         }
 
         private void cbx_NameIngr_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,6 +154,9 @@ namespace Opening_The_Program
 
         }
 
+        /// <summary>
+        /// Тестовый лист ингридиентов.
+        /// </summary>
         private void SetUpList()
         {
             ///***инициализируем для тестов начальный лист***///
@@ -172,11 +231,6 @@ namespace Opening_The_Program
             rtb_DescriptionRecie.Text = "";
             controllerIngredient.ingredients = new List<Ingredient>();
             MessageBox.Show("Ошибка, " + ErrorText);
-        }
-
-        private void Panel_AddRecipe_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

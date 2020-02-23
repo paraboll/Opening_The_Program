@@ -282,7 +282,6 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Panel_AddRecipe";
             this.Size = new System.Drawing.Size(800, 570);
-            this.Load += new System.EventHandler(this.Panel_AddRecipe_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

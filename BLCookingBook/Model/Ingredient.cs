@@ -36,6 +36,7 @@ namespace BLCookingBook.Model
         /// <param name="count"></param>
         public Ingredient(string nameIngredient, string count)
         {
+            //TODO: добавть вызов исключения на null и вывод в лог.
             if(string.IsNullOrEmpty(nameIngredient))
             {
                 Console.WriteLine("nameIngredient пустая"); 
