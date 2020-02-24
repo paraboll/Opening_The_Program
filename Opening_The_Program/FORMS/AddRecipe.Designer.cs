@@ -71,6 +71,7 @@
             this.tb_TitleRecipe.Name = "tb_TitleRecipe";
             this.tb_TitleRecipe.Size = new System.Drawing.Size(159, 26);
             this.tb_TitleRecipe.TabIndex = 1;
+            this.tb_TitleRecipe.Click += new System.EventHandler(this.tb_TitleRecipe_Click);
             // 
             // label2
             // 
@@ -88,6 +89,7 @@
             this.tb_NameIngrid.Name = "tb_NameIngrid";
             this.tb_NameIngrid.Size = new System.Drawing.Size(159, 26);
             this.tb_NameIngrid.TabIndex = 3;
+            this.tb_NameIngrid.Click += new System.EventHandler(this.tb_NameIngrid_Click);
             // 
             // groupBox1
             // 
@@ -122,6 +124,7 @@
             this.tb_CountIngrid.Name = "tb_CountIngrid";
             this.tb_CountIngrid.Size = new System.Drawing.Size(159, 26);
             this.tb_CountIngrid.TabIndex = 6;
+            this.tb_CountIngrid.Click += new System.EventHandler(this.tb_CountIngrid_Click);
             // 
             // label3
             // 
@@ -186,6 +189,7 @@
             this.tb_countIngr.Name = "tb_countIngr";
             this.tb_countIngr.Size = new System.Drawing.Size(158, 26);
             this.tb_countIngr.TabIndex = 9;
+            this.tb_countIngr.Click += new System.EventHandler(this.tb_countIngr_Click);
             // 
             // tb_nameIngr
             // 
@@ -193,6 +197,7 @@
             this.tb_nameIngr.Name = "tb_nameIngr";
             this.tb_nameIngr.Size = new System.Drawing.Size(158, 26);
             this.tb_nameIngr.TabIndex = 8;
+            this.tb_nameIngr.Click += new System.EventHandler(this.tb_nameIngr_Click);
             // 
             // label7
             // 
@@ -238,6 +243,7 @@
             this.rtb_DescriptionRecie.Size = new System.Drawing.Size(351, 371);
             this.rtb_DescriptionRecie.TabIndex = 8;
             this.rtb_DescriptionRecie.Text = "";
+            this.rtb_DescriptionRecie.Click += new System.EventHandler(this.rtb_DescriptionRecie_Click);
             // 
             // groupBox4
             // 

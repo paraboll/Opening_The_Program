@@ -36,10 +36,6 @@ namespace Opening_The_Program
 
         private void btn_AddIngrid_Click(object sender, EventArgs e)
         {
-            //устанавливаем цвет textBox
-            tb_NameIngrid.BackColor = Color.White;
-            tb_CountIngrid.BackColor = Color.White;
-
             //проверка на пустые поля в тексбоксе
             bool flagTb_NameIngrid =    false;
             bool flagTb_CountIngrid =   false;
@@ -71,26 +67,6 @@ namespace Opening_The_Program
             }
         }
 
-        /// <summary>
-        /// Метод выведит предупреждение о незаполненых полях на форме.
-        /// </summary>
-        /// <param name="_messageError">Словарь незополененых полей</param>
-        private void ErrorMessage(Dictionary<object, string> _messageError)
-        {
-            string messageError = "";
-            foreach (var item in _messageError)
-            {
-                TextBox temp = (TextBox)item.Key;
-
-                //TODO: переписать через вызов метода SetTextBoxBackColor
-                temp.BackColor = Color.Red;
-                messageError += item.Value;
-            }
-
-            MessageBox.Show(messageError);
-            return;
-        }
-
         private void SetTextBoxBackColor(TextBox _tb, Color _color)
         {
             _tb.BackColor = _color;
@@ -115,10 +91,17 @@ namespace Opening_The_Program
 
                 //обновляем комбобокс
                 rewriteCombobox();
-            }
 
-            tb_nameIngr.Text = "";
-            tb_countIngr.Text = "";
+                tb_nameIngr.Text = "";
+                tb_countIngr.Text = "";
+
+                MessageBox.Show("Ингридиент удален");
+            }
+            else
+            {
+                MessageBox.Show("Не выбран ингридиент");
+            }
+            
         }
 
         private void btn_EditRecipe_Click(object sender, EventArgs e)
@@ -126,11 +109,36 @@ namespace Opening_The_Program
             //проверяем что комбобокс не пустой
             if (cbx_NameIngr.Text != null && cbx_NameIngr.Text != "")
             {
-                //TODO: проверить все на null.
-                controllerIngredient.EditIngredient(cbx_NameIngr.Text, tb_nameIngr.Text, tb_countIngr.Text);
+                //проверка на пустые поля в тексбоксе
+                bool flagTb_nameIngr = false;
+                bool flagTb_countIngr = false;
 
-                //обновляем комбобокс
-                rewriteCombobox();
+                if (tb_nameIngr.Text.Length <= 0) flagTb_nameIngr = true;
+                if (tb_countIngr.Text.Length <= 0) flagTb_countIngr = true;
+
+                //Хранит все незаполненые поля и предупреждения
+                //Словарь позволит вылить зеленым все заполненые элементы и красным незаполненые.
+                var messageError = new Dictionary<object, string>();
+                if (flagTb_nameIngr) messageError.Add(tb_nameIngr, "Вы не ввели ингридиент. \n");
+                if (flagTb_countIngr) messageError.Add(tb_countIngr, "Вы не ввели количество ингридиентов. \n");
+
+                if (flagTb_nameIngr || flagTb_countIngr)
+                {
+                    ErrorMessage(messageError);
+                }
+                else
+                {
+                    //TODO: проверить все на null.
+                    controllerIngredient.EditIngredient(cbx_NameIngr.Text, tb_nameIngr.Text, tb_countIngr.Text);
+
+                    //обновляем комбобокс
+                    rewriteCombobox();
+                    MessageBox.Show("Ингридиент изменен");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали ингридиент");
             }
         }
 
@@ -183,18 +191,21 @@ namespace Opening_The_Program
                 {
                     ErrorMessage("Не заполено название рецепта.");
                     logger.Error("btn_SaveRecipe_Click | Не заполено название рецепта.");
+                    return;
                 }
 
                 if (controllerIngredient.ingredients == null)
                 {
                     ErrorMessage("Список ингридиентов пуст.");
                     logger.Error("btn_SaveRecipe_Click | Список ингридиентов пуст.");
+                    return;
                 }
 
                 if (rtb_DescriptionRecie.Text == null || rtb_DescriptionRecie.Text == "")
                 {
                     ErrorMessage("Незаполнено описание рецепта.");
                     logger.Error("btn_SaveRecipe_Click | Незаполнено описание рецепта.");
+                    return;
                 }
 
                 Recipe recipe = new Recipe(
@@ -225,12 +236,65 @@ namespace Opening_The_Program
         /// Mетод выводит сообщение об ошибке.
         /// </summary>
         /// <param name="ErrorText"></param>
-        public void ErrorMessage(string ErrorText)
+        private void ErrorMessage(string ErrorText)
         {
             tb_TitleRecipe.Text = "";
             rtb_DescriptionRecie.Text = "";
             controllerIngredient.ingredients = new List<Ingredient>();
             MessageBox.Show("Ошибка, " + ErrorText);
         }
+
+        /// <summary>
+        /// Метод выведит предупреждение о незаполненых полях на форме.
+        /// </summary>
+        /// <param name="_messageError">Словарь незополененых полей</param>
+        private void ErrorMessage(Dictionary<object, string> _messageError)
+        {
+            string messageError = "";
+            foreach (var item in _messageError)
+            {
+                TextBox temp = (TextBox)item.Key;
+
+                //TODO: переписать через вызов метода SetTextBoxBackColor
+                temp.BackColor = Color.Red;
+                messageError += item.Value;
+            }
+
+            MessageBox.Show(messageError);
+            return;
+        }
+
+        # region пока незнаю как получить обьект по клику по нему и записать в 1 метод
+        //TODO: пока незнаю как получить обьект по клику по нему и записать в 1 метод
+        private void tb_NameIngrid_Click(object sender, EventArgs e)
+        {
+            tb_NameIngrid.BackColor = Color.White;
+        }
+
+        private void tb_CountIngrid_Click(object sender, EventArgs e)
+        {
+            tb_CountIngrid.BackColor = Color.White;
+        }
+
+        private void tb_nameIngr_Click(object sender, EventArgs e)
+        {
+            tb_nameIngr.BackColor = Color.White;
+        }
+
+        private void tb_countIngr_Click(object sender, EventArgs e)
+        {
+            tb_countIngr.BackColor = Color.White;
+        }
+
+        private void tb_TitleRecipe_Click(object sender, EventArgs e)
+        {
+            tb_TitleRecipe.BackColor = Color.White;
+        }
+
+        private void rtb_DescriptionRecie_Click(object sender, EventArgs e)
+        {
+            rtb_DescriptionRecie.BackColor = Color.White;
+        }
+        #endregion
     }
 }
