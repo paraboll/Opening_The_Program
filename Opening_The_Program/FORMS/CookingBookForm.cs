@@ -5,11 +5,14 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLCookingBook;
 using BLCookingBook.Controller;
 using BLCookingBook.Model;
+using BLCookingBook.SendEmail;
 
 namespace Opening_The_Program
 {
@@ -68,6 +71,17 @@ namespace Opening_The_Program
 
         private void btn_listOfRecipes_Click(object sender, EventArgs e)
         {
+            /*
+            //TODO: убрать (подумать как получить email пользователя и в случае ошибки отправлять себе лог ошибки на почту)
+            //считываем конфиг данные из файла 
+            Dictionary<string, string> setting = Settigs.getSettingsInFile();
+
+            //TODO
+            MailAddress from = new MailAddress(setting["mailFrom"], setting["nameFrom"]);
+            MailAddress to = new MailAddress(setting["mailTo"], setting["nameTo"]);
+            SendEmail sendEmail = new SendEmail(from, to);
+            sendEmail.sendNewMail("Тест Заголовок", "Тест Текст");*/
+
             panel_Note.Visible = false;
             panel_AddRecipe.Visible = false;
             listRecipes.Visible = true;
@@ -76,7 +90,6 @@ namespace Opening_The_Program
             List<Recipe> data = saveFile.GetListRecipe();
 
             listRecipes.addButton(data);
-
         }
 
         private void btn_addRacipe_Click(object sender, EventArgs e)

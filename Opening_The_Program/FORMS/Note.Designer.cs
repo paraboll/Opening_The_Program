@@ -41,7 +41,8 @@ namespace Opening_The_Program
             this.gb_Notes.Controls.Add(this.rtb_Notes);
             this.gb_Notes.Controls.Add(this.btn_SaveNote);
             this.gb_Notes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gb_Notes.Font = new Font("Verdana", 9.75F, (FontStyle.Bold | FontStyle.Italic), GraphicsUnit.Point, 204);
+            this.gb_Notes.Font = new System.Drawing.Font("Verdana", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gb_Notes.Location = new System.Drawing.Point(0, 0);
             this.gb_Notes.Name = "gb_Notes";
             this.gb_Notes.Size = new System.Drawing.Size(800, 570);
             this.gb_Notes.TabIndex = 0;
@@ -52,11 +53,12 @@ namespace Opening_The_Program
             // 
             this.rtb_Notes.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.rtb_Notes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rtb_Notes.Location = new System.Drawing.Point(3, 22);
+            this.rtb_Notes.Location = new System.Drawing.Point(3, 19);
             this.rtb_Notes.Name = "rtb_Notes";
             this.rtb_Notes.Size = new System.Drawing.Size(794, 502);
             this.rtb_Notes.TabIndex = 2;
             this.rtb_Notes.Text = "";
+            this.rtb_Notes.TextChanged += new System.EventHandler(this.rtb_Notes_TextChanged);
             // 
             // btn_SaveNote
             // 

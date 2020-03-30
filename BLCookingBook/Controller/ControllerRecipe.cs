@@ -9,14 +9,19 @@ namespace BLCookingBook.Controller
 {
     public class ControllerRecipe
     {
-        //Для добавления в фаил рецептов.
-        Recipe recipe;
+        /// <summary>
+        /// Содержит лист ингридиентов.
+        /// </summary>
+        public ControllerIngredient controllerIngredient;
 
-        ControllerIngredient controllerIngredient;
+        /// <summary>
+        /// Содержит список рецептов.
+        /// </summary>
+        public List<Recipe> recipes;
 
-        //содержит список рецептов.
-        List<Recipe> recipes;
-
+        /// <summary>
+        /// Пустой список рецептов
+        /// </summary>
         public ControllerRecipe()
         {
             recipes = new List<Recipe>();

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -32,24 +34,38 @@ namespace BLCookingBook.SendEmail
         /// </summary>
         /// <param name="titleMail">Заголовок сообщения.</param>
         /// <param name="bodyMail">Текст сообщения.</param>
-        public void sendMailAsync(string titleMail, string bodyMail)
+        public void sendNewMail(string titleMail, string bodyMail)
         {
-            // создаем объект сообщения
-            MailMessage m = new MailMessage(from, to);
-            m.Subject = titleMail;
-            m.Body = bodyMail;
+            try
+            {
+                // создаем объект сообщения
+                MailMessage m = new MailMessage(from, to);
+                m.Subject = titleMail;
+                m.Body = bodyMail;
 
-            // письмо представляет код html
-            m.IsBodyHtml = true;
+                // письмо представляет код html
+                m.IsBodyHtml = true;
 
-            //TODO: вынести параметры в конфиг фаил.
-            // адрес smtp-сервера и порт, с которого будем отправлять письмо
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            
-            // логин и пароль
-            smtp.Credentials = new NetworkCredential("somemail@gmail.com", "mypassword");
-            smtp.EnableSsl = true;
-            smtp.Send(m);
+                //адрес smtp-сервера и порт, с которого будем отправлять письмо (указаны в App.config)
+                SmtpClient smtp = new SmtpClient(
+                    ConfigurationManager.AppSettings.Get("SMTPServer"),
+                    Convert.ToInt32(ConfigurationManager.AppSettings.Get("SMTPPort"))
+                );
+
+
+                //считываем конфиг данные из файла 
+                Dictionary<string, string> setting = Settigs.getSettingsInFile();
+                // логин и пароль
+                smtp.Credentials = new NetworkCredential(setting["myLogin"], setting["myPassword"]);
+                smtp.EnableSsl = true;
+                smtp.Send(m);
+
+                Console.WriteLine("Сообщение успешно отправленно!");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ошибка отправки сообщения: " + ex);
+            } 
         }
     }
 }

@@ -40,6 +40,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.6.8\lib\net45\NLog.dll</HintPath>
     </Reference>
@@ -62,10 +63,12 @@
     <Compile Include="Controller\ControllerIngredient.cs" />
     <Compile Include="Controller\ControllerRecipe.cs" />
     <Compile Include="Controller\SaveFile.cs" />
+    <Compile Include="Controller\SerializationOnJson.cs" />
     <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\Recipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SendEmail\SendEmail.cs" />
+    <Compile Include="Settigs.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="LOG.BL\" />

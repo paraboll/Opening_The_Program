@@ -33,19 +33,27 @@ namespace Opening_The_Program
 
         private void ButtonOnClick(object sender, EventArgs eventArgs)
         {
-            var button = (Button)sender;
-            if (button != null)
+            try
             {
-                Recipe recipe = dataRecipe.Find(u => u.NameRecipe == button.Text);
-                rtb_TitleRecipe.Text = recipe.NameRecipe;
-                rtb_DescriptionRecipe.Text = recipe.DescriptionOfRecipes;
-
-                dgv_ingridTable.Rows.Clear();
-                foreach (var item in recipe.Ingredients)
+                var button = (XButton)sender;
+                if (button != null)
                 {
-                    //Добавляем строку, указывая значения колонок поочереди слева направо
-                    dgv_ingridTable.Rows.Add(item.NameIngredient, item.Сount);
+                    Recipe recipe = dataRecipe.Find(u => u.NameRecipe == button.FullNameRecipe);
+                    rtb_TitleRecipe.Text = recipe.NameRecipe;
+                    rtb_DescriptionRecipe.Text = recipe.DescriptionOfRecipes;
+
+                    dgv_ingridTable.Rows.Clear();
+                    foreach (var item in recipe.Ingredients)
+                    {
+                        //Добавляем строку, указывая значения колонок поочереди слева направо
+                        dgv_ingridTable.Rows.Add(item.NameIngredient, item.Сount);
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                //TODO: вывести в лог
+                Console.WriteLine("ошибка ButtonOnClick:" + ex);
             }
         }
 
@@ -89,7 +97,7 @@ namespace Opening_The_Program
             panel_ListRecipe.Controls.Clear();
             for (int i = 0; i < TempListRecipe.Count; i++)
             {
-                Button button = new Button();
+                XButton button = new XButton();
                 button.Dock = DockStyle.Top;
                 button.FlatAppearance.BorderColor = Color.FromArgb(192, 0, 0);
                 button.FlatStyle = FlatStyle.Flat;
@@ -105,7 +113,22 @@ namespace Opening_The_Program
                 button.TextAlign = ContentAlignment.MiddleRight;
                 button.UseVisualStyleBackColor = true;
                 button.Click += ButtonOnClick;
-                panel_ListRecipe.Controls.Add(button);
+                button.СookingTime = TempListRecipe[i].RecipeRatingByСookingTime;
+                button.СookingTimeText = "Приготовление:";
+
+                //для поиска по имени
+                button.FullNameRecipe = TempListRecipe[i].NameRecipe;
+                //для красивого вывода на кновку
+                if (TempListRecipe[i].NameRecipe.Length >= 22)
+                {
+                    button.NameRecipe = TempListRecipe[i].NameRecipe.Substring(0, 21) + "...";
+                }
+                else { button.NameRecipe = TempListRecipe[i].NameRecipe; }
+
+                button.EvaluationOfTasteText = "Оценка вкуса:";
+                button.EvaluationOfTaste = TempListRecipe[i].RecipeRatingByTaste.ToString();
+
+                panel_ListRecipe.Controls.Add(button);  
             }
         }
 
@@ -124,13 +147,22 @@ namespace Opening_The_Program
 
         private void btn_Rating_Click(object sender, EventArgs e)
         {
-            var obj = (dataRecipe.FirstOrDefault(o => o.NameRecipe == rtb_TitleRecipe.Text));
-            if (obj != null)
+            try
             {
-                RateRecipe(obj);
-            }
+                var obj = (dataRecipe.FirstOrDefault(o => o.NameRecipe == rtb_TitleRecipe.Text));
+                if (obj != null)
+                {
+                    RateRecipe(obj);
+                }
 
-            panel_RaitingRecipe.Visible = false;
+                panel_RaitingRecipe.Visible = false;
+
+            }
+            catch(Exception ex)
+            {
+                //TODO: вывести ошибку в лог
+                Console.WriteLine("ошибка btn_Rating_Click: " + ex);
+            }
         }
 
         private void RateRecipe(Recipe recipe)
@@ -146,6 +178,8 @@ namespace Opening_The_Program
                 recipe.RecipeRatingByСookingTime = cb_TimeCooking.Text;
             }
             else { Console.WriteLine("оценки времеми нет"); }
+
+            //TODO: перезаписать в файле и вывести в кнопку изменения.
         }
 
         private void labelRatingRecipe_Click(object sender, EventArgs e)

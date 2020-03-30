@@ -62,34 +62,40 @@ namespace BLCookingBook.Controller
         /// <param name="recipe">Новый рецепт</param>
         public void WriteInFile(Recipe recipe)
         {
-            StreamWriter str = new StreamWriter("Recipe.txt", true);
-            str.WriteLine("NewRecipe");
-
-            //Задаем имя рецепту
-            str.WriteLine(recipe.NameRecipe);
-
-            //Задаем описание рецепта
-            str.WriteLine("startDescription");
-            str.WriteLine(recipe.DescriptionOfRecipes);
-            str.WriteLine("endDescription");
-
-            str.WriteLine(recipe.RecipeRatingByTaste);
-            str.WriteLine(recipe.RecipeRatingByСookingTime);
-
-            //для удобства считывания - количество ингридиентов
-            str.WriteLine(recipe.Ingredients.Count);
-
-            //Задаем список ингридиентов: имя + количество
-            foreach (var item in recipe.Ingredients)
+            using (StreamWriter str = new StreamWriter("Recipe.txt", true))
             {
-                str.WriteLine(item.NameIngredient);
-                str.WriteLine(item.Сount);
-            }
-            str.WriteLine("------------");
+                str.WriteLine("NewRecipe");
 
-            str.Close();
-            //Console.WriteLine("Запись в фаил успешна --> Recipe.txt");
-            //Console.WriteLine();
+                //Задаем имя рецепту
+                str.WriteLine(recipe.NameRecipe);
+
+                //Задаем описание рецепта
+                str.WriteLine("startDescription");
+                str.WriteLine(recipe.DescriptionOfRecipes);
+                str.WriteLine("endDescription");
+
+                str.WriteLine("evaluationOfTaste");
+                str.WriteLine(recipe.RecipeRatingByTaste);
+
+                str.WriteLine("evaluationOfTheSpeed");
+                str.WriteLine(recipe.RecipeRatingByСookingTime);
+
+                //для удобства считывания - количество ингридиентов
+                str.WriteLine(recipe.Ingredients.Count);
+
+                //Задаем список ингридиентов: имя + количество
+                foreach (var item in recipe.Ingredients)
+                {
+                    str.WriteLine(item.NameIngredient);
+                    str.WriteLine(item.Сount);
+                }
+                str.WriteLine("------------");
+
+                str.Close();
+                //Console.WriteLine("Запись в фаил успешна --> Recipe.txt");
+                //Console.WriteLine();
+            }
+
         }
         
         /// <summary>
@@ -123,8 +129,11 @@ namespace BLCookingBook.Controller
                             }
                         }
 
-                        recipe.RecipeRatingByTaste = Convert.ToInt32(reader.ReadLine());
-                        recipe.RecipeRatingByСookingTime = reader.ReadLine();
+                        string tempRatingByTaste = reader.ReadLine();
+                        if(tempRatingByTaste.Equals("evaluationOfTaste")) recipe.RecipeRatingByTaste = Convert.ToInt32(reader.ReadLine());
+
+                        string tempRatingByСookingTime = reader.ReadLine();
+                        if(tempRatingByСookingTime.Equals("evaluationOfTheSpeed")) recipe.RecipeRatingByСookingTime = reader.ReadLine();
 
                         int ingLength = Convert.ToInt32(reader.ReadLine());
                         recipe.Ingredients = new List<Ingredient>();
@@ -154,6 +163,30 @@ namespace BLCookingBook.Controller
                 }
                 return recipes;
             }
+        }
+
+        /// <summary>
+        /// Метод устанавливает оценку Вкуса и Скорости приготовления в файле
+        /// </summary>
+        /// <param name="recipe">Рецепт, который оценили</param>
+        public void setRatingRecipe(Recipe recipe)
+        {
+            string str;
+            //TODO: добавить идентификаторы оценка вкуса и скорости в файле
+            //искать рецепт в файле по имени а потом в рецепте искать по идентификатору и вносить оценку.
+            using (var reader = new StreamReader("Recipe.txt"))
+            {
+                while (reader.Peek() != -1)
+                {
+                    str = reader.ReadLine();
+                    if (str.Equals(recipe.NameRecipe))
+                    {
+                        str = reader.ReadLine();
+                        //if(str.Equals("evaluationOfTaste")) 
+                    }
+                }
+            }
+           
         }
     }
 }

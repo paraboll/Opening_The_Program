@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using BLCookingBook.Model;
 using BLCookingBook.Controller;
 using NLog;
+using BLCookingBook.SendEmail;
+using System.Net.Mail;
 
 namespace Opening_The_Program
 {
@@ -18,7 +20,7 @@ namespace Opening_The_Program
     /// </summary>
     public partial class Panel_AddRecipe : UserControl
     {
-        private ControllerIngredient controllerIngredient;
+        //private ControllerIngredient controllerIngredient;
         private ControllerRecipe controllerRecipe;
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
@@ -28,8 +30,8 @@ namespace Opening_The_Program
         public Panel_AddRecipe()
         {
             InitializeComponent();
-            controllerIngredient = new ControllerIngredient();
-            controllerRecipe = new ControllerRecipe(); 
+            controllerRecipe = new ControllerRecipe();
+            controllerRecipe.recipes = SerializationOnJson.RecipeDeserializationJson(); 
 
             SetUpList();
         }
@@ -56,7 +58,7 @@ namespace Opening_The_Program
             }
             else
             {
-                controllerIngredient.AddIngridient(tb_NameIngrid.Text, tb_CountIngrid.Text);
+                controllerRecipe.controllerIngredient.AddIngridient(tb_NameIngrid.Text, tb_CountIngrid.Text);
 
                 tb_NameIngrid.Text = "";
                 tb_CountIngrid.Text = "";
@@ -75,7 +77,7 @@ namespace Opening_The_Program
         private void cbx_NameIngr_SelectedIndexChanged(object sender, EventArgs e)
         {
             //находим выбраный элемент в комбобокс
-            var item = controllerIngredient.ingredients.Find(n => n.NameIngredient == cbx_NameIngr.Text);
+            var item = controllerRecipe.controllerIngredient.ingredients.Find(n => n.NameIngredient == cbx_NameIngr.Text);
    
             //выводим о нем данные
             tb_nameIngr.Text = item.NameIngredient;
@@ -87,8 +89,8 @@ namespace Opening_The_Program
             //проверяем что комбобокс не пустой
             if (cbx_NameIngr.Text != null && cbx_NameIngr.Text != "")
             {
-                controllerIngredient.DeleteIngredient(cbx_NameIngr.Text);
-
+                controllerRecipe.controllerIngredient.DeleteIngredient(cbx_NameIngr.Text);
+               
                 //обновляем комбобокс
                 rewriteCombobox();
 
@@ -129,7 +131,7 @@ namespace Opening_The_Program
                 else
                 {
                     //TODO: проверить все на null.
-                    controllerIngredient.EditIngredient(cbx_NameIngr.Text, tb_nameIngr.Text, tb_countIngr.Text);
+                    controllerRecipe.controllerIngredient.EditIngredient(cbx_NameIngr.Text, tb_nameIngr.Text, tb_countIngr.Text);
 
                     //обновляем комбобокс
                     rewriteCombobox();
@@ -147,14 +149,14 @@ namespace Opening_The_Program
             cbx_NameIngr.Items.Clear();
             int count = 0;
 
-            if(controllerIngredient.ingredients.Count == 0)
+            if (controllerRecipe.controllerIngredient.ingredients.Count == 0)
             {
                 logger.Warn("SetUpList | Лист ингридиентов пуст.");
             }
 
-            foreach (var i in controllerIngredient.ingredients)
+            foreach (var i in controllerRecipe.controllerIngredient.ingredients)
             {
-                cbx_NameIngr.Items.Add(controllerIngredient.ingredients[count].NameIngredient);
+                cbx_NameIngr.Items.Add(controllerRecipe.controllerIngredient.ingredients[count].NameIngredient);
                 count++;
             }
             tb_nameIngr.Text = "";
@@ -168,16 +170,16 @@ namespace Opening_The_Program
         private void SetUpList()
         {
             ///***инициализируем для тестов начальный лист***///
-            controllerIngredient.ingredients.Add(new Ingredient("морковь", "2 штуки"));
-            controllerIngredient.ingredients.Add(new Ingredient("картошка", "2 кг"));
-            controllerIngredient.ingredients.Add(new Ingredient("перец болгарский", "1 кг"));
-            controllerIngredient.ingredients.Add(new Ingredient("лук", "1 шт"));
+            controllerRecipe.controllerIngredient.ingredients.Add(new Ingredient("морковь", "2 штуки"));
+            controllerRecipe.controllerIngredient.ingredients.Add(new Ingredient("картошка", "2 кг"));
+            controllerRecipe.controllerIngredient.ingredients.Add(new Ingredient("перец болгарский", "1 кг"));
+            controllerRecipe.controllerIngredient.ingredients.Add(new Ingredient("лук", "1 шт"));
 
             ///***Добавляем в комбобокс***///
             int count = 0;
-            foreach (var item in controllerIngredient.ingredients)
+            foreach (var item in controllerRecipe.controllerIngredient.ingredients)
             {
-                cbx_NameIngr.Items.Add(controllerIngredient.ingredients[count].NameIngredient);
+                cbx_NameIngr.Items.Add(controllerRecipe.controllerIngredient.ingredients[count].NameIngredient);
                 count++;
             }
             logger.Info("SetUpList | Инициализирован начальный лист ингридиентов.");
@@ -194,7 +196,7 @@ namespace Opening_The_Program
                     return;
                 }
 
-                if (controllerIngredient.ingredients == null)
+                if (controllerRecipe.controllerIngredient.ingredients == null)
                 {
                     ErrorMessage("Список ингридиентов пуст.");
                     logger.Error("btn_SaveRecipe_Click | Список ингридиентов пуст.");
@@ -211,8 +213,11 @@ namespace Opening_The_Program
                 Recipe recipe = new Recipe(
                     tb_TitleRecipe.Text,
                     rtb_DescriptionRecie.Text,
-                    new List<Ingredient>(controllerIngredient.ingredients) 
+                    new List<Ingredient>(controllerRecipe.controllerIngredient.ingredients) 
                     );
+
+                controllerRecipe.recipes.Add(recipe);
+                SerializationOnJson.RecipeSerializationJson(controllerRecipe.recipes);
 
                 SaveFile saveFile = new SaveFile();
                 saveFile.WriteInFile(recipe);
@@ -240,7 +245,7 @@ namespace Opening_The_Program
         {
             tb_TitleRecipe.Text = "";
             rtb_DescriptionRecie.Text = "";
-            controllerIngredient.ingredients = new List<Ingredient>();
+            controllerRecipe.controllerIngredient.ingredients = new List<Ingredient>();
             MessageBox.Show("Ошибка, " + ErrorText);
         }
 

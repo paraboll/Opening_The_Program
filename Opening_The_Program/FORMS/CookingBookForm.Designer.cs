@@ -1,4 +1,6 @@
-﻿namespace Opening_The_Program
+﻿using BLCookingBook.Controller;
+
+namespace Opening_The_Program
 {
     partial class CookingBookForm
     {

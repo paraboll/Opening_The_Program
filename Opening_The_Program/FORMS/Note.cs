@@ -33,5 +33,10 @@ namespace Opening_The_Program
         {
             rtb_Notes.LoadFile("Notes.txt", RichTextBoxStreamType.PlainText);
         }
+
+        private void rtb_Notes_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
